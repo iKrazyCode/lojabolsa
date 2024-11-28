@@ -107,46 +107,43 @@
     <!-- Conteúdo -->
     <main class="container" style="padding-top: 200px;">
 
-        <div class="banner row row-cols-1 row-cols-md-2 p-0 m-0 h-25">
+        <div class="banner row p-0 m-0 h-25">
 
-            <div class="col">
-                <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+            <div class="col-12 col-md-3">
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                      
+                    </div>
                     <div class="carousel-inner">
-                        <div class="carousel-item active" data-bs-interval="10000">
-                            <div class="col col-8 mx-auto">
-                                <canvas id="canvas_frente" class="" width="250" height="250"></canvas>
+                      <div class="carousel-item active">
+                        <canvas id="canvas_frente" class="" width="250" height="250"></canvas>
 
-                            </div>
-                        </div>
-                        <div class="carousel-item" data-bs-interval="2000">
-                            <div class="col col-8 mx-auto">
+                      </div>
+                      <div class="carousel-item">
+                        <canvas id="canvas_diagonal" class="" width="250" height="250"></canvas>
 
-                                <canvas id="canvas_diagonal" class="" width="250" height="250"></canvas>
-
-                            </div>
-                        </div>
+                      </div>
 
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
                     </button>
-                </div>
+                  </div>
             </div>
 
-            <div class="col p-2">
+            <div class="col-12 col-md-9 p-2">
 
-                <div class="colors-choices px-0 py-4 mx-auto w-75 d-flex flex-column gap-4 rounded-4 text-bg-dark text-center"
-                    style="background-color: #1f1f1f !important;">
+                <div class="colors-choices px-0 py-4 mx-auto w-75 d-flex flex-column gap-4 rounded-4 text-center" style="background-color: #212225;">
                     <!-- NEW -->
                     <div class="colors">
-                        <span class="small">Cor da alça:</span>
+                        <span class="small">Cor da alça</span>
                         <!-- Paleta de cores pré-definidas -->
                         <div class="color-palette row row-cols-auto gap-1 justify-content-center px-2">
                             <div class="color-option alca col border border-5 border-dark rounded-3"
@@ -168,7 +165,7 @@
 
                     <!-- NEW -->
                     <div class="colors">
-                        <span class="">Cor da frente:</span>
+                        <span class="">Cor da frente</span>
                         <!-- Paleta de cores pré-definidas -->
                         <div class="color-palette row row-cols-auto gap-1 justify-content-center px-2">
                             <div class="color-option alca col border border-5 border-dark rounded-3"
@@ -189,7 +186,7 @@
 
 
                     <div class="colors">
-                        <span class="">Cor da parte de trás:</span>
+                        <span class="">Cor da parte de trás</span>
                         <!-- Paleta de cores pré-definidas -->
                         <div class="color-palette row row-cols-auto gap-1 justify-content-center px-2">
                             <div class="color-option atras col border border-5 border-dark rounded-3"
@@ -266,6 +263,9 @@
 
         <!-- Canvas Frontal -->
         <script>
+
+
+
             // FRONTAL
             const canvas_frente = document.getElementById('canvas_frente');
             const ctx = canvas_frente.getContext('2d');
@@ -300,7 +300,7 @@
                     tempCanvas.width = canvas_frente.width;
                     tempCanvas.height = canvas_frente.height;
 
-                    // Desenha a imagem no canvas temporário
+
                     tempCtx.drawImage(loadedImages[index], img.x, img.y, 150, 150);
 
                     // Aplica a máscara no canvas temporário
