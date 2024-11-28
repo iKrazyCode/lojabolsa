@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design 2D com Alteração de Cor</title>
+    <style>
+        canvas {
+            border: 1px solid #ccc;
+        }
+
+
+        .controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .color-selector {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas_frente" width="300" height="300"></canvas>
+    <canvas id="canvas_diagonal" width="300" height="300"></canvas>
+
+    <!-- Controles -->
+    <div class="controls">
+        <h3>Seletores de Cor</h3>
+        <div class="color-selector">
+            <label for="color1">Alça:</label>
+            <input type="color" id="colorAlca" value="#ff0000" />
+        </div>
+        <div class="color-selector">
+            <label for="color2">Parte da frente:</label>
+            <input type="color" id="colorFrente" value="#00ff00" />
+        </div>
+
+    </div>
+
+    <script>
+        // FRENTE
+        const canvas_frente = document.getElementById('canvas_frente');
+        const ctx = canvas_frente.getContext('2d');
+
+        // Imagens a serem desenhadas
+        const images = [
+            { src: 'imgs/alca.png', x: 50, y: 50, color: '#ff0000' },
+            { src: 'imgs/frente.png', x: 50, y: 50, color: '#00ff00' },
+        ];
+
+        // Carrega todas as imagens
+        const loadedImages = [];
+        images.forEach((img, index) => {
+            const image = new Image();
+            image.src = img.src;
+            image.onload = () => {
+                loadedImages[index] = image;
+                if (loadedImages.length === images.length) {
+                    drawCanvasFrente(); // Redesenha quando todas as imagens forem carregadas
+                }
+            };
+        });
+
+        // Função para desenhar o canvas
+        function drawCanvasFrente() {
+            ctx.clearRect(0, 0, canvas_frente.width, canvas_frente.height); // Limpa o canvas
+
+            images.forEach((img, index) => {
+                // Cria um canvas temporário (offscreen)
+                const tempCanvas = document.createElement('canvas');
+                const tempCtx = tempCanvas.getContext('2d');
+                tempCanvas.width = canvas_frente.width;
+                tempCanvas.height = canvas_frente.height;
+
+                // Desenha a imagem no canvas temporário
+                tempCtx.drawImage(loadedImages[index], img.x, img.y, 150, 150);
+
+                // Aplica a máscara no canvas temporário
+                tempCtx.globalCompositeOperation = 'source-atop';
+
+                console.log(img.color);
+                const cor = hexToRgba(img.color, 0.4);
+                
+                tempCtx.fillStyle = cor;
+
+                tempCtx.fillRect(img.x, img.y, 150, 150);
+                ctx.globalCompositeOperation = 'source-over';
+
+                // Desenha o conteúdo do canvas temporário no canvas principal
+                ctx.drawImage(tempCanvas, 0, 0);
+            });
+        }
+
+        // Configura os seletores de cor
+        document.getElementById('color1').addEventListener('input', (e) => {
+            images[0].color = e.target.value;
+            drawCanvasFrente();
+        });
+
+        document.getElementById('color2').addEventListener('input', (e) => {
+            images[1].color = e.target.value;
+            drawCanvasFrente();
+        });
+
+        function hexToRgba(hex, alpha = 0.6) {
+            // Remove o símbolo # se existir
+            const cleanHex = hex.replace('#', '');
+
+            // Divide o hexadecimal em R, G, B
+            const bigint = parseInt(cleanHex, 16);
+            const r = (bigint >> 16) & 255; // Vermelho
+            const g = (bigint >> 8) & 255;  // Verde
+            const b = bigint & 255;         // Azul
+
+            // Retorna no formato rgba
+            return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+        }
+
+    </script>
+
+
+<script>
+    // DIAGONAL
+    const canvas_diagonal = document.getElementById('canvas_diagonal');
+    const ctx_diagonal = canvas_diagonal.getContext('2d');
+
+    // Imagens a serem desenhadas
+    const imagesDiagonal = [
+        { src: 'imgs/diag_alca.png', x: 50, y: 50, color: '#ff0000' },
+        { src: 'imgs/diag_frente.png', x: 50, y: 50, color: '#ff0000' },
+        { src: 'imgs/diag_meio.png', x: 50, y: 50, color: '#ff0000' },
+        { src: 'imgs/diag_atras.png', x: 50, y: 50, color: '#ff0000' },
+    ];
+
+    // Carrega todas as imagens
+    const loadedImagesDiagonal = [];
+    imagesDiagonal.forEach((img, index) => {
+        const image = new Image();
+        image.src = img.src;
+        image.onload = () => {
+            loadedImagesDiagonal[index] = image;
+            if (loadedImagesDiagonal.length === images.length) {
+                drawCanvasDiagonal(); // Redesenha quando todas as imagens forem carregadas
+            }
+        };
+    });
+
+    // Função para desenhar o canvas
+    function drawCanvasDiagonal() {
+        ctx_diagonal.clearRect(0, 0, canvas_diagonal.width, canvas_diagonal.height); // Limpa o canvas
+
+        imagesDiagonal.forEach((img, index) => {
+            // Cria um canvas temporário (offscreen)
+            const tempCanvas = document.createElement('canvas');
+            const tempCtx = tempCanvas.getContext('2d');
+            tempCanvas.width = canvas_diagonal.width;
+            tempCanvas.height = canvas_diagonal.height;
+
+            // Desenha a imagem no canvas temporário
+            tempCtx.drawImage(loadedImagesDiagonal[index], img.x, img.y, 150, 150);
+
+            // Aplica a máscara no canvas temporário
+            tempCtx.globalCompositeOperation = 'source-atop';
+
+            console.log(img.color);
+            const cor = hexToRgba(img.color, 0.4);
+            
+            tempCtx.fillStyle = cor;
+
+            tempCtx.fillRect(img.x, img.y, 150, 150);
+            ctx_diagonal.globalCompositeOperation = 'source-over';
+
+            // Desenha o conteúdo do canvas temporário no canvas principal
+            ctx_diagonal.drawImage(tempCanvas, 0, 0);
+        });
+    }
+
+    // Configura os seletores de cor
+    document.getElementById('colorAlca').addEventListener('input', (e) => {
+        images[0].color = e.target.value;
+        imagesDiagonal[0].color = e.target.value;
+        drawCanvasDiagonal();
+    });
+
+    document.getElementById('colorFrente').addEventListener('input', (e) => {
+        imagesDiagonal[1].color = e.target.value;
+        drawCanvasDiagonal();
+    });
+
+    
+
+    function hexToRgba(hex, alpha = 0.6) {
+        // Remove o símbolo # se existir
+        const cleanHex = hex.replace('#', '');
+
+        // Divide o hexadecimal em R, G, B
+        const bigint = parseInt(cleanHex, 16);
+        const r = (bigint >> 16) & 255; // Vermelho
+        const g = (bigint >> 8) & 255;  // Verde
+        const b = bigint & 255;         // Azul
+
+        // Retorna no formato rgba
+        return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    }
+
+</script>
+</body>
+
+</html>
