@@ -19,10 +19,12 @@
             font-style: normal;
 
         }
+
         .link-hover {
             text-decoration: none;
             color: #0066cc !important;
         }
+
         .link-hover:hover {
             text-decoration: underline;
         }
@@ -93,12 +95,12 @@
         }
 
         .custom-min-vh-100 {
-            min-height: auto;
+            height: 90vh;
         }
 
         @media (min-width: 768px) {
             .custom-min-vh-100 {
-                min-height: 100vh;
+                min-height: 95vh;
             }
         }
 
@@ -106,6 +108,7 @@
             color: transparent;
             transition: ease 0.5s;
             cursor: pointer;
+            height: 1.5rem !important;
         }
 
         .color-item:hover {
@@ -133,7 +136,7 @@
             <div class="mx-auto py-2 row row-cols-3 align-items-center" style="width: 85%;">
 
                 <div class="col h-100 p-0 m-0 justify-content-center">
-                    <button class="navbar-toggler border-0 fs-6" id="menuToggle">
+                    <button class="navbar-toggler border-0 fs-6" id="menuToggle" data-bs-theme="dark">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>
@@ -147,9 +150,9 @@
 
                 <div class="col">
                     <ul class="d-flex justify-content-end column-gap-3 align-items-center m-0 p-0">
-                        <li class="nav-item d-none d-md-block"><a href="#" class="nav-link text-uppercase"
+                        <li class="nav-item d-none d-md-block"><a href="#" class="nav-link link-hover text-uppercase"
                                 rel="noopener noreferrer">Blog</a></li>
-                        <li class="nav-item d-none d-md-block"><a href="#" class="nav-link text-uppercase"
+                        <li class="nav-item d-none d-md-block"><a href="#" class="nav-link link-hover text-uppercase"
                                 rel="noopener noreferrer">Contatos</a></li>
 
                     </ul>
@@ -174,7 +177,7 @@
     <main class="main">
 
         <!-- BANNER -->
-        <div class="banner text-bg-dark pt-5" style="background-color: #0e0e12 !important;">
+        <div class="banner text-bg-dark pt-5 pt-md-1" style="background-color: #0e0e12 !important;">
             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
@@ -187,12 +190,12 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <div class="d-flex flex-column custom-min-vh-100 flex-md-row column-gap-3 align-items-center container py-5"
-                            style="height: 450; width: 75%;">
+                            style="width: 75%;">
                             <div class="w-100">
-                                <img class="img-fluid rounded-2" style="height: 300px; width: 350;"
+                                <img class="img-fluid rounded-2 shadow" style="height: 300px; width: 350;"
                                     src="imgs/ilustrativa.webp">
                             </div>
-                            <div class="mt-5">
+                            <div class="mt-5 w-100 text-center">
                                 <p>
                                     Faça a montagem da sua bolsa, com as cores que você quiser
                                 </p>
@@ -204,13 +207,13 @@
                         <div class="d-flex flex-column custom-min-vh-100 flex-md-row column-gap-3 align-items-center container py-5"
                             style="height: 450; width: 75%;">
                             <div class="w-100">
-                                <img class="img-fluid rounded-2 " style="height: 300px; width: 350;"
-                                    src="imgs/banner.png">
+                                <img class="img-fluid rounded-2 shadow" style="height: 300px; width: 350;"
+                                    src="https://picsum.photos/400/200">
                             </div>
-                            <div class="mt-5">
-                                <p>
-                                    Faça a montagem da sua bolsa, com as cores que você quiser
-                                </p>
+                            <div class="mt-5 w-100 text-center">
+                                <p>Material 100% Orgânico. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id
+                                    odit non veniam! Maxime provident quod, repellat ut voluptatem asperiores sequi
+                                    natus consequatur nesciunt rem? Molestias accusantium eum hic magni pariatur!</p>
                             </div>
 
                         </div>
@@ -219,10 +222,10 @@
                         <div class="d-flex flex-column custom-min-vh-100 flex-md-row column-gap-3 align-items-center container py-5"
                             style="height: 450; width: 75%;">
                             <div class="w-100">
-                                <img class="img-fluid rounded-2 " style="height: 300px; width: 350;"
+                                <img class="img-fluid rounded-2 shadow" style="height: 300px; width: 350;"
                                     src="imgs/banner.png">
                             </div>
-                            <div class="mt-5">
+                            <div class="mt-5 w-100 text-center">
                                 <p>
                                     Faça a montagem da sua bolsa, com as cores que você quiser
                                 </p>
@@ -249,7 +252,8 @@
         <!-- MONTE -->
         <div class="monte-bolsa mt-4">
             <div class="monte-header mt-5 mb-5 py-3" style="background-color: #f5f5f7;">
-                <h2 class="text-center "><i class="me-4 bi bi-pencil-fill"></i>Monte a sua <i class="ms-4 bi bi-pencil-fill"></i></h2>
+                <h2 class="text-center "><i class="me-4 bi bi-pencil-fill"></i>Monte a sua <i
+                        class="ms-4 bi bi-pencil-fill"></i></h2>
             </div>
             <div class="row justify-content-around">
                 <div class="col-12 col-md-5 h-100">
@@ -259,32 +263,31 @@
                 <div class="col-12 col-md-5">
                     <div class="right-top h-100">
                         <div class="bg-white px-4 py-4 h-100 shadow gap-4 d-flex flex-column">
-                            <h3 class="font-roboto alert text-center py-2 text-black small" style="">Escolha quais cores quer usar hoje !</h3>
+                            <h3 class="font-roboto alert text-center py-2 text-black small" style="">Escolha quais cores
+                                quer usar hoje !</h3>
                             <div class="d-flex gap-2 color-list flex-wrap">
-                                <div class="color-item py-1 px-2 rounded-3 border border-2 border-dark-subtle"
+                                <div class="color-item small px-2 overflow-hidden rounded-2 border border-2 border-dark-subtle"
                                     style="background-color: #0e0e12;">#0e0e12</div>
-                                <div class="color-item py-1 px-2 rounded-3 border border-2 border-dark-subtle"
-                                    style="background-color: #0000ff;">#0e0e12</div>
-                                <div class="color-item py-1 px-2 rounded-3 border border-2 border-dark-subtle"
+                                <div class="color-item small px-2 overflow-hidden rounded-2 border border-2 border-dark-subtle"
+                                    style="background-color: #ff9100;">#0e0e12</div>
+                                <div class="color-item small px-2 overflow-hidden rounded-2 border border-2 border-dark-subtle"
+                                    style="background-color: #00007c;">#0e0e12</div>
+                                <div class="color-item small px-2 overflow-hidden rounded-2 border border-2 border-dark-subtle"
+                                    style="background-color: #48fe57;">#0e0e12</div>
+                                <div class="color-item small px-2 overflow-hidden rounded-2 border border-2 border-dark-subtle"
+                                    style="background-color: #7b7b7b;">#0e0e12</div>
+                                <div class="color-item small px-2 overflow-hidden rounded-2 border border-2 border-dark-subtle"
                                     style="background-color: #0e0e12;">#0e0e12</div>
-                                <div class="color-item py-1 px-2 rounded-3 border border-2 border-dark-subtle"
-                                    style="background-color: #11ff00;">#0e0e12</div>
-                                <div class="color-item py-1 px-2 rounded-3 border border-2 border-dark-subtle"
-                                    style="background-color: #e900e1;">#0e0e12</div>
-                                <div class="color-item py-1 px-2 rounded-3 border border-2 border-dark-subtle"
-                                    style="background-color: #8c8cc7;">#0e0e12</div>
-                                <div class="color-item py-1 px-2 rounded-3 border border-2 border-dark-subtle"
-                                    style="background-color: #e1fa3f;">#0e0e12</div>
-                                <div class="color-item py-1 px-2 rounded-3 border border-2 border-dark-subtle"
-                                    style="background-color: #ffffff;">#0e0e12</div>
-                                <div class="color-item py-1 px-2 rounded-3 border border-2 border-dark-subtle"
-                                    style="background-color: #a68d00;">#0e0e12</div>
-                                <div class="color-item py-1 px-2 rounded-3 border border-2 border-dark-subtle"
-                                    style="background-color: #0e0e12;">#0e0e12</div>
+                                <div class="color-item small px-2 overflow-hidden rounded-2 border border-2 border-dark-subtle"
+                                    style="background-color: #d70000;">#d70000</div><div class="color-item small px-2 overflow-hidden rounded-2 border border-2 border-dark-subtle"
+                                    style="background-color: #ffea00;">#ffea00;</div><div class="color-item small px-2 overflow-hidden rounded-2 border border-2 border-dark-subtle"
+                                    style="background-color: #ff00c3;">#ff00c3</div><div class="color-item small px-2 overflow-hidden rounded-2 border border-2 border-dark-subtle"
+                                    style="background-color: #480012;">#480012;</div>
                             </div>
                             <div class="gobolsa mt-auto">
                                 <div>
-                                    <a href="#" class="link-hover" style="font-size: 21px;">Montar minha bolsa <i class="bi bi-chevron-right"></i></a>
+                                    <a href="#" class="link-hover" style="font-size: 21px;">Montar minha bolsa <i
+                                            class="bi bi-chevron-right"></i></a>
                                 </div>
                             </div>
                         </div>
