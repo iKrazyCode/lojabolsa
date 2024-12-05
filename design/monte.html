@@ -1123,6 +1123,8 @@
                     drawCanvasDiagonal();
                 } else if (partial == 'atras') {
                     imagesDiagonal[3].color = color;
+                    imagesatras[3].color = color;
+                    drawCanvasatras();
                     drawCanvasDiagonal();
                 }
 
@@ -1142,8 +1144,8 @@
 
         // Imagens a serem desenhadas
         const images = [
-            { src: 'imgs/alca.png', x: 50, y: 50, color: '#ff0000' },
-            { src: 'imgs/frente.png', x: 50, y: 50, color: '#ff0000' },
+            { src: 'imgs/frente_alca.png', x: 50, y: 50, color: '#ff0000' },
+            { src: 'imgs/frente_frente.png', x: 50, y: 50, color: '#ff0000' },
         ];
 
         // Carrega todas as imagens
@@ -1284,8 +1286,83 @@
 
     </script>
 
+    <!-- Canvas Atrás -->
+    <!-- Canvas atras -->
+    <script>
+        // atras
+        const canvas_atras = document.getElementById('canvas_atras');
+        const ctx_atras = canvas_atras.getContext('2d');
+
+        // Imagens a serem desenhadas
+        const imagesatras = [
+            { src: 'imgs/diag_alca.png', x: 50, y: 50, color: '#ff0000' },
+            { src: 'imgs/diag_frente.png', x: 50, y: 50, color: '#ff0000' },
+            { src: 'imgs/diag_meio.png', x: 50, y: 50, color: '#ff0000' },
+            { src: 'imgs/diag_atras.png', x: 50, y: 50, color: '#ff0000' },
+        ];
+
+        // Carrega todas as imagens
+        const loadedImagesatras = [];
+        imagesatras.forEach((img, index) => {
+            const image = new Image();
+            image.src = img.src;
+            image.onload = () => {
+                loadedImagesatras[index] = image;
+                if (loadedImagesatras.length === imagesatras.length) {
+                    drawCanvasatras(); // Redesenha quando todas as imagens forem carregadas
+                }
+            };
+        });
+
+        // Função para desenhar o canvas
+        function drawCanvasatras() {
+            ctx_atras.clearRect(0, 0, canvas_atras.width, canvas_atras.height); // Limpa o canvas
+
+            imagesatras.forEach((img, index) => {
+                // Cria um canvas temporário (offscreen)
+                const tempCanvas = document.createElement('canvas');
+                const tempCtx = tempCanvas.getContext('2d');
+                tempCanvas.width = canvas_atras.width;
+                tempCanvas.height = canvas_atras.height;
+
+                // Desenha a imagem no canvas temporário
+                tempCtx.drawImage(loadedImagesatras[index], img.x, img.y, 150, 150);
+
+                // Aplica a máscara no canvas temporário
+                tempCtx.globalCompositeOperation = 'source-atop';
+
+                console.log(img.color);
+                const cor = hexToRgba(img.color, 0.4);
+
+                tempCtx.fillStyle = cor;
+
+                tempCtx.fillRect(img.x, img.y, 150, 150);
+                ctx_atras.globalCompositeOperation = 'source-over';
+
+                // Desenha o conteúdo do canvas temporário no canvas principal
+                ctx_atras.drawImage(tempCanvas, 0, 0);
+            });
+        }
 
 
+
+
+
+        function hexToRgba(hex, alpha = 0.6) {
+            // Remove o símbolo # se existir
+            const cleanHex = hex.replace('#', '');
+
+            // Divide o hexadecimal em R, G, B
+            const bigint = parseInt(cleanHex, 16);
+            const r = (bigint >> 16) & 255; // Vermelho
+            const g = (bigint >> 8) & 255;  // Verde
+            const b = bigint & 255;         // Azul
+
+            // Retorna no formato rgba
+            return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+        }
+
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
