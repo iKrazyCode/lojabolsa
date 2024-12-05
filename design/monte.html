@@ -135,7 +135,202 @@
         .color-option:hover {
             transform: scale(1.1);
         }
+
+
+
+
+
+        /* colors palet */
+
+        .card {
+            background: #fff;
+            border-radius: 10px;
+        }
+
+        .card .paleta {
+            align-items: center;
+            justify-content: center;
+        }
+
+        .component {
+            height: 23px;
+        }
+
+        .card .paleta .cores {
+            cursor: pointer;
+            transition: 0.3s linear;
+        }
+
+        .card .paleta .cores:hover {
+            transform: scale(1.1);
+            transition: 0.1s linear;
+        }
+
+        .circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #fff;
+            position: absolute;
+            top: -60px;
+            box-shadow: 1px 1px 8px #c7c7c7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .card .paleta .cores .nome {
+            width: 100%;
+            height: 30px;
+            background-color: #fff;
+            text-align: center;
+            font-size: 11px;
+            font-family: Roboto, sans-serif;
+            font-weight: 550;
+        }
+
+        .card .paleta .func {
+            width: 100px;
+            display: block;
+            transform: rotate(-90deg);
+            position: absolute;
+            bottom: 40px;
+            margin-left: -41px;
+            padding-left: 5px;
+            color: #fff;
+            font-size: 15px;
+            font-family: sans-serif;
+            font-weight: 500;
+        }
+
+        .div1 {
+            cursor: pointer;
+            transition: background-color 0.3s;
+            position: absolute;
+            bottom: 0;
+            width: 80px;
+            height: 150px;
+        }
+
+        .div2 {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #fff;
+            position: absolute;
+            top: -60px;
+            left: 135px;
+            box-shadow: 1px 1px 8px #c7c7c7;
+            align-items: center;
+            justify-content: center;
+            display: none;
+        }
+
+        .div1:hover+.div2 {
+            background-color: #0e3746;
+            display: flex;
+            color: #fff;
+            animation: cssAnimation_0 1512ms 1 ease-out;
+        }
+
+        .div3 {
+            cursor: pointer;
+            transition: background-color 0.3s;
+            position: absolute;
+            bottom: 0;
+            width: 80px;
+            height: 150px;
+        }
+
+        .div4 {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #fff;
+            position: absolute;
+            top: -60px;
+            left: 135px;
+            box-shadow: 1px 1px 8px #c7c7c7;
+            align-items: center;
+            justify-content: center;
+            display: none;
+        }
+
+        .div3:hover+.div4 {
+            background-color: #eae8dc;
+            display: flex;
+            color: #fff;
+            animation: cssAnimation_0 1512ms 1 ease-out;
+        }
+
+        .div5 {
+            cursor: pointer;
+            transition: background-color 0.3s;
+            position: absolute;
+            bottom: 0;
+            width: 80px;
+            height: 150px;
+        }
+
+        .div6 {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #fff;
+            position: absolute;
+            top: -60px;
+            left: 135px;
+            box-shadow: 1px 1px 8px #c7c7c7;
+            align-items: center;
+            justify-content: center;
+            display: none;
+        }
+
+        .div5:hover+.div6 {
+            background-color: #f4f2ec;
+            display: flex;
+            color: #fff;
+            animation: cssAnimation_0 1512ms 1 ease-out;
+        }
+
+        .div7 {
+            cursor: pointer;
+            transition: background-color 0.3s;
+            position: absolute;
+            bottom: 0;
+            width: 80px;
+            height: 150px;
+        }
+
+        .div8 {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #fff;
+            position: absolute;
+            top: -60px;
+            left: 135px;
+            box-shadow: 1px 1px 8px #c7c7c7;
+            align-items: center;
+            justify-content: center;
+            display: none;
+        }
+
+        .div7:hover+.div8 {
+            background-color: #be2623;
+            display: flex;
+            color: #fff;
+            animation: cssAnimation_0 1512ms 1 ease-out;
+        }
+
+        @keyframes cssAnimation_0 {
+            to {
+                transform: rotate(360deg) translate(0px, 0px);
+            }
+        }
     </style>
+
 </head>
 
 <body data-bs-theme="light">
@@ -225,34 +420,205 @@
                             <div
                                 class="row row-cols-1 row-cols-md-2 justify-content-center text-center items-align-center">
                                 <div class="col">
-                                    <div class="border">
+                                    <div class="">
                                         <canvas id="canvas_diagonal" class="" width="250" height="250"></canvas>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="h-100 pt-4 pt-md-3">
-                                            <h3 class="">Cor da alça</h3>
-                                            <div class="colors mt-3 mt-md-5">
+                                        <h3 class="">Cor da alça</h3>
+                                        <div class="colors mt-3 mt-md-5">
                                             <!-- Paleta de cores pré-definidas -->
-                                            <div
-                                                class="color-palette row row-cols-auto gap-1 justify-content-center px-2">
-                                                <div class="color-option alca col border border-5 border-dark rounded-3"
-                                                    style="background-color: #ff0000;" partial="alca"
-                                                    data-color="#ff0000">
-                                                </div>
-                                                <div class="color-option alca col border border-5 border-dark rounded-3"
-                                                    style="background-color: #00ff00;" partial="alca"
-                                                    data-color="#00ff00">
-                                                </div>
-                                                <div class="color-option alca col border border-5 border-dark rounded-3"
-                                                    style="background-color: #0000ff;" partial="alca"
-                                                    data-color="#0000ff">
-                                                </div>
-                                                <div class="color-option alca col border border-5 border-dark rounded-3"
-                                                    style="background-color: #ffff00;" partial="alca"
-                                                    data-color="#ffff00">
+                                            <div class="color-palette  gap-1 justify-content-center px-2">
+
+
+                                                <!-- colors -->
+                                                <div class="card py-3 px-3 bg-body-secondary">
+                                                    <div class="paleta">
+                                                        <div class="circle">
+                                                            <div class="component">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="22"
+                                                                    height="22" fill="currentColor"
+                                                                    class="bi bi-palette" viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M8 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm4 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM5.5 7a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z">
+                                                                    </path>
+                                                                    <path
+                                                                        d="M16 8c0 3.15-1.866 2.585-3.567 2.07C11.42 9.763 10.465 9.473 10 10c-.603.683-.475 1.819-.351 2.92C9.826 14.495 9.996 16 8 16a8 8 0 1 1 8-8zm-8 7c.611 0 .654-.171.655-.176.078-.146.124-.464.07-1.119-.014-.168-.037-.37-.061-.591-.052-.464-.112-1.005-.118-1.462-.01-.707.083-1.61.704-2.314.369-.417.845-.578 1.272-.618.404-.038.812.026 1.16.104.343.077.702.186 1.025.284l.028.008c.346.105.658.199.953.266.653.148.904.083.991.024C14.717 9.38 15 9.161 15 8a7 7 0 1 0-7 7z">
+                                                                    </path>
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="row row-cols-auto text-center justify-content-center gap-1">
+                                                            <div class="col cores alca color-option rounded-2"
+                                                                partial="alca" data-color="#0E3746"
+                                                                style="background-color: #0E3746;">
+
+                                                                <div class="div2">
+                                                                    <div class="component">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            width="22" height="22" fill="currentColor"
+                                                                            class="bi bi-palette" viewBox="0 0 16 16">
+                                                                            <path
+                                                                                d="M8 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm4 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM5.5 7a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z">
+                                                                            </path>
+                                                                            <path
+                                                                                d="M16 8c0 3.15-1.866 2.585-3.567 2.07C11.42 9.763 10.465 9.473 10 10c-.603.683-.475 1.819-.351 2.92C9.826 14.495 9.996 16 8 16a8 8 0 1 1 8-8zm-8 7c.611 0 .654-.171.655-.176.078-.146.124-.464.07-1.119-.014-.168-.037-.37-.061-.591-.052-.464-.112-1.005-.118-1.462-.01-.707.083-1.61.704-2.314.369-.417.845-.578 1.272-.618.404-.038.812.026 1.16.104.343.077.702.186 1.025.284l.028.008c.346.105.658.199.953.266.653.148.904.083.991.024C14.717 9.38 15 9.161 15 8a7 7 0 1 0-7 7z">
+                                                                            </path>
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="nome bg-transparent text-white">0E3746</div>
+                                                            </div>
+                                                            <div class="col cores alca color-option rounded-2"
+                                                                partial="alca" data-color="#24d600"
+                                                                style="background-color: #24d600;">
+
+                                                                <div class="div2">
+                                                                    <div class="component">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            width="22" height="22" fill="currentColor"
+                                                                            class="bi bi-palette" viewBox="0 0 16 16">
+                                                                            <path
+                                                                                d="M8 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm4 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM5.5 7a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z">
+                                                                            </path>
+                                                                            <path
+                                                                                d="M16 8c0 3.15-1.866 2.585-3.567 2.07C11.42 9.763 10.465 9.473 10 10c-.603.683-.475 1.819-.351 2.92C9.826 14.495 9.996 16 8 16a8 8 0 1 1 8-8zm-8 7c.611 0 .654-.171.655-.176.078-.146.124-.464.07-1.119-.014-.168-.037-.37-.061-.591-.052-.464-.112-1.005-.118-1.462-.01-.707.083-1.61.704-2.314.369-.417.845-.578 1.272-.618.404-.038.812.026 1.16.104.343.077.702.186 1.025.284l.028.008c.346.105.658.199.953.266.653.148.904.083.991.024C14.717 9.38 15 9.161 15 8a7 7 0 1 0-7 7z">
+                                                                            </path>
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="nome bg-transparent text-white">24d600</div>
+                                                            </div>
+                                                            <div class="col cores alca color-option rounded-2"
+                                                                partial="alca" data-color="#0E3746"
+                                                                style="background-color: #0E3746;">
+
+                                                                <div class="div2">
+                                                                    <div class="component">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            width="22" height="22" fill="currentColor"
+                                                                            class="bi bi-palette" viewBox="0 0 16 16">
+                                                                            <path
+                                                                                d="M8 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm4 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM5.5 7a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z">
+                                                                            </path>
+                                                                            <path
+                                                                                d="M16 8c0 3.15-1.866 2.585-3.567 2.07C11.42 9.763 10.465 9.473 10 10c-.603.683-.475 1.819-.351 2.92C9.826 14.495 9.996 16 8 16a8 8 0 1 1 8-8zm-8 7c.611 0 .654-.171.655-.176.078-.146.124-.464.07-1.119-.014-.168-.037-.37-.061-.591-.052-.464-.112-1.005-.118-1.462-.01-.707.083-1.61.704-2.314.369-.417.845-.578 1.272-.618.404-.038.812.026 1.16.104.343.077.702.186 1.025.284l.028.008c.346.105.658.199.953.266.653.148.904.083.991.024C14.717 9.38 15 9.161 15 8a7 7 0 1 0-7 7z">
+                                                                            </path>
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="nome bg-transparent text-white">0E3746</div>
+                                                            </div>
+                                                            <div class="col cores alca color-option rounded-2"
+                                                                partial="alca" data-color="#00cfba"
+                                                                style="background-color: #00cfba;">
+
+                                                                <div class="div2">
+                                                                    <div class="component">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            width="22" height="22" fill="currentColor"
+                                                                            class="bi bi-palette" viewBox="0 0 16 16">
+                                                                            <path
+                                                                                d="M8 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm4 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM5.5 7a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z">
+                                                                            </path>
+                                                                            <path
+                                                                                d="M16 8c0 3.15-1.866 2.585-3.567 2.07C11.42 9.763 10.465 9.473 10 10c-.603.683-.475 1.819-.351 2.92C9.826 14.495 9.996 16 8 16a8 8 0 1 1 8-8zm-8 7c.611 0 .654-.171.655-.176.078-.146.124-.464.07-1.119-.014-.168-.037-.37-.061-.591-.052-.464-.112-1.005-.118-1.462-.01-.707.083-1.61.704-2.314.369-.417.845-.578 1.272-.618.404-.038.812.026 1.16.104.343.077.702.186 1.025.284l.028.008c.346.105.658.199.953.266.653.148.904.083.991.024C14.717 9.38 15 9.161 15 8a7 7 0 1 0-7 7z">
+                                                                            </path>
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="nome bg-transparent text-white">24d600</div>
+                                                            </div>
+                                                            <div class="col cores alca color-option rounded-2"
+                                                                partial="alca" data-color="#7000b1"
+                                                                style="background-color: #7000b1;">
+
+                                                                <div class="div2">
+                                                                    <div class="component">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            width="22" height="22" fill="currentColor"
+                                                                            class="bi bi-palette" viewBox="0 0 16 16">
+                                                                            <path
+                                                                                d="M8 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm4 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM5.5 7a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z">
+                                                                            </path>
+                                                                            <path
+                                                                                d="M16 8c0 3.15-1.866 2.585-3.567 2.07C11.42 9.763 10.465 9.473 10 10c-.603.683-.475 1.819-.351 2.92C9.826 14.495 9.996 16 8 16a8 8 0 1 1 8-8zm-8 7c.611 0 .654-.171.655-.176.078-.146.124-.464.07-1.119-.014-.168-.037-.37-.061-.591-.052-.464-.112-1.005-.118-1.462-.01-.707.083-1.61.704-2.314.369-.417.845-.578 1.272-.618.404-.038.812.026 1.16.104.343.077.702.186 1.025.284l.028.008c.346.105.658.199.953.266.653.148.904.083.991.024C14.717 9.38 15 9.161 15 8a7 7 0 1 0-7 7z">
+                                                                            </path>
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="nome bg-transparent text-white">0E3746</div>
+                                                            </div>
+                                                            <div class="col cores alca color-option rounded-2"
+                                                                partial="alca" data-color="#790000"
+                                                                style="background-color: #790000;">
+
+                                                                <div class="div2">
+                                                                    <div class="component">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            width="22" height="22" fill="currentColor"
+                                                                            class="bi bi-palette" viewBox="0 0 16 16">
+                                                                            <path
+                                                                                d="M8 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm4 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM5.5 7a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z">
+                                                                            </path>
+                                                                            <path
+                                                                                d="M16 8c0 3.15-1.866 2.585-3.567 2.07C11.42 9.763 10.465 9.473 10 10c-.603.683-.475 1.819-.351 2.92C9.826 14.495 9.996 16 8 16a8 8 0 1 1 8-8zm-8 7c.611 0 .654-.171.655-.176.078-.146.124-.464.07-1.119-.014-.168-.037-.37-.061-.591-.052-.464-.112-1.005-.118-1.462-.01-.707.083-1.61.704-2.314.369-.417.845-.578 1.272-.618.404-.038.812.026 1.16.104.343.077.702.186 1.025.284l.028.008c.346.105.658.199.953.266.653.148.904.083.991.024C14.717 9.38 15 9.161 15 8a7 7 0 1 0-7 7z">
+                                                                            </path>
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="nome bg-transparent text-white">24d600</div>
+                                                            </div>
+                                                            <div class="col cores alca color-option rounded-2"
+                                                                partial="alca" data-color="#460e3c"
+                                                                style="background-color: #460e3c;">
+
+                                                                <div class="div2">
+                                                                    <div class="component">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            width="22" height="22" fill="currentColor"
+                                                                            class="bi bi-palette" viewBox="0 0 16 16">
+                                                                            <path
+                                                                                d="M8 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm4 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM5.5 7a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z">
+                                                                            </path>
+                                                                            <path
+                                                                                d="M16 8c0 3.15-1.866 2.585-3.567 2.07C11.42 9.763 10.465 9.473 10 10c-.603.683-.475 1.819-.351 2.92C9.826 14.495 9.996 16 8 16a8 8 0 1 1 8-8zm-8 7c.611 0 .654-.171.655-.176.078-.146.124-.464.07-1.119-.014-.168-.037-.37-.061-.591-.052-.464-.112-1.005-.118-1.462-.01-.707.083-1.61.704-2.314.369-.417.845-.578 1.272-.618.404-.038.812.026 1.16.104.343.077.702.186 1.025.284l.028.008c.346.105.658.199.953.266.653.148.904.083.991.024C14.717 9.38 15 9.161 15 8a7 7 0 1 0-7 7z">
+                                                                            </path>
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="nome bg-transparent text-white">0E3746</div>
+                                                            </div>
+                                                            <div class="col cores alca color-option rounded-2"
+                                                                partial="alca" data-color="#f2ba00"
+                                                                style="background-color: #f2ba00;">
+
+                                                                <div class="div2">
+                                                                    <div class="component">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            width="22" height="22" fill="currentColor"
+                                                                            class="bi bi-palette" viewBox="0 0 16 16">
+                                                                            <path
+                                                                                d="M8 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm4 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM5.5 7a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z">
+                                                                            </path>
+                                                                            <path
+                                                                                d="M16 8c0 3.15-1.866 2.585-3.567 2.07C11.42 9.763 10.465 9.473 10 10c-.603.683-.475 1.819-.351 2.92C9.826 14.495 9.996 16 8 16a8 8 0 1 1 8-8zm-8 7c.611 0 .654-.171.655-.176.078-.146.124-.464.07-1.119-.014-.168-.037-.37-.061-.591-.052-.464-.112-1.005-.118-1.462-.01-.707.083-1.61.704-2.314.369-.417.845-.578 1.272-.618.404-.038.812.026 1.16.104.343.077.702.186 1.025.284l.028.008c.346.105.658.199.953.266.653.148.904.083.991.024C14.717 9.38 15 9.161 15 8a7 7 0 1 0-7 7z">
+                                                                            </path>
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="nome bg-transparent text-white">24d600</div>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                    </div>
                                                 </div>
 
+                                                <!-- //colors  -->
                                             </div>
                                         </div>
                                     </div>
@@ -269,27 +635,201 @@
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div class="colors">
-                                        <span class="small">Cor da Frente</span>
-                                        <!-- Paleta de cores pré-definidas -->
-                                        <div class="color-palette row row-cols-auto gap-1 justify-content-center px-2">
-                                            <div class="color-option frente col border border-5 border-dark rounded-3"
-                                                style="background-color: #ff0000;" partial="frente"
-                                                data-color="#ff0000">
-                                            </div>
-                                            <div class="color-option frente col border border-5 border-dark rounded-3"
-                                                style="background-color: #00ff00;" partial="frente"
-                                                data-color="#00ff00">
-                                            </div>
-                                            <div class="color-option frente col border border-5 border-dark rounded-3"
-                                                style="background-color: #0000ff;" partial="frente"
-                                                data-color="#0000ff">
-                                            </div>
-                                            <div class="color-option frente col border border-5 border-dark rounded-3"
-                                                style="background-color: #ffff00;" partial="frente"
-                                                data-color="#ffff00">
-                                            </div>
+                                    <div class="h-100 pt-4 pt-md-3">
+                                        <h3 class="">Cor da alça</h3>
+                                        <div class="colors mt-3 mt-md-5">
+                                            <!-- Paleta de cores pré-definidas -->
+                                            <div class="color-palette  gap-1 justify-content-center px-2">
 
+
+                                                <!-- colors -->
+                                                <div class="card py-3 px-3 bg-body-secondary">
+                                                    <div class="paleta">
+                                                        <div class="circle">
+                                                            <div class="component">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="22"
+                                                                    height="22" fill="currentColor"
+                                                                    class="bi bi-palette" viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M8 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm4 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM5.5 7a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z">
+                                                                    </path>
+                                                                    <path
+                                                                        d="M16 8c0 3.15-1.866 2.585-3.567 2.07C11.42 9.763 10.465 9.473 10 10c-.603.683-.475 1.819-.351 2.92C9.826 14.495 9.996 16 8 16a8 8 0 1 1 8-8zm-8 7c.611 0 .654-.171.655-.176.078-.146.124-.464.07-1.119-.014-.168-.037-.37-.061-.591-.052-.464-.112-1.005-.118-1.462-.01-.707.083-1.61.704-2.314.369-.417.845-.578 1.272-.618.404-.038.812.026 1.16.104.343.077.702.186 1.025.284l.028.008c.346.105.658.199.953.266.653.148.904.083.991.024C14.717 9.38 15 9.161 15 8a7 7 0 1 0-7 7z">
+                                                                    </path>
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="row row-cols-auto text-center justify-content-center gap-1">
+                                                            <div class="col cores frente color-option rounded-2"
+                                                                partial="frente" data-color="#0E3746"
+                                                                style="background-color: #0E3746;">
+
+                                                                <div class="div2">
+                                                                    <div class="component">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            width="22" height="22" fill="currentColor"
+                                                                            class="bi bi-palette" viewBox="0 0 16 16">
+                                                                            <path
+                                                                                d="M8 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm4 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM5.5 7a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z">
+                                                                            </path>
+                                                                            <path
+                                                                                d="M16 8c0 3.15-1.866 2.585-3.567 2.07C11.42 9.763 10.465 9.473 10 10c-.603.683-.475 1.819-.351 2.92C9.826 14.495 9.996 16 8 16a8 8 0 1 1 8-8zm-8 7c.611 0 .654-.171.655-.176.078-.146.124-.464.07-1.119-.014-.168-.037-.37-.061-.591-.052-.464-.112-1.005-.118-1.462-.01-.707.083-1.61.704-2.314.369-.417.845-.578 1.272-.618.404-.038.812.026 1.16.104.343.077.702.186 1.025.284l.028.008c.346.105.658.199.953.266.653.148.904.083.991.024C14.717 9.38 15 9.161 15 8a7 7 0 1 0-7 7z">
+                                                                            </path>
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="nome bg-transparent text-white">0E3746</div>
+                                                            </div>
+                                                            <div class="col cores frente color-option rounded-2"
+                                                                partial="frente" data-color="#24d600"
+                                                                style="background-color: #24d600;">
+
+                                                                <div class="div2">
+                                                                    <div class="component">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            width="22" height="22" fill="currentColor"
+                                                                            class="bi bi-palette" viewBox="0 0 16 16">
+                                                                            <path
+                                                                                d="M8 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm4 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM5.5 7a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z">
+                                                                            </path>
+                                                                            <path
+                                                                                d="M16 8c0 3.15-1.866 2.585-3.567 2.07C11.42 9.763 10.465 9.473 10 10c-.603.683-.475 1.819-.351 2.92C9.826 14.495 9.996 16 8 16a8 8 0 1 1 8-8zm-8 7c.611 0 .654-.171.655-.176.078-.146.124-.464.07-1.119-.014-.168-.037-.37-.061-.591-.052-.464-.112-1.005-.118-1.462-.01-.707.083-1.61.704-2.314.369-.417.845-.578 1.272-.618.404-.038.812.026 1.16.104.343.077.702.186 1.025.284l.028.008c.346.105.658.199.953.266.653.148.904.083.991.024C14.717 9.38 15 9.161 15 8a7 7 0 1 0-7 7z">
+                                                                            </path>
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="nome bg-transparent text-white">24d600</div>
+                                                            </div>
+                                                            <div class="col cores frente color-option rounded-2"
+                                                                partial="frente" data-color="#0E3746"
+                                                                style="background-color: #0E3746;">
+
+                                                                <div class="div2">
+                                                                    <div class="component">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            width="22" height="22" fill="currentColor"
+                                                                            class="bi bi-palette" viewBox="0 0 16 16">
+                                                                            <path
+                                                                                d="M8 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm4 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM5.5 7a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z">
+                                                                            </path>
+                                                                            <path
+                                                                                d="M16 8c0 3.15-1.866 2.585-3.567 2.07C11.42 9.763 10.465 9.473 10 10c-.603.683-.475 1.819-.351 2.92C9.826 14.495 9.996 16 8 16a8 8 0 1 1 8-8zm-8 7c.611 0 .654-.171.655-.176.078-.146.124-.464.07-1.119-.014-.168-.037-.37-.061-.591-.052-.464-.112-1.005-.118-1.462-.01-.707.083-1.61.704-2.314.369-.417.845-.578 1.272-.618.404-.038.812.026 1.16.104.343.077.702.186 1.025.284l.028.008c.346.105.658.199.953.266.653.148.904.083.991.024C14.717 9.38 15 9.161 15 8a7 7 0 1 0-7 7z">
+                                                                            </path>
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="nome bg-transparent text-white">0E3746</div>
+                                                            </div>
+                                                            <div class="col cores frente color-option rounded-2"
+                                                                partial="frente" data-color="#00cfba"
+                                                                style="background-color: #00cfba;">
+
+                                                                <div class="div2">
+                                                                    <div class="component">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            width="22" height="22" fill="currentColor"
+                                                                            class="bi bi-palette" viewBox="0 0 16 16">
+                                                                            <path
+                                                                                d="M8 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm4 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM5.5 7a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z">
+                                                                            </path>
+                                                                            <path
+                                                                                d="M16 8c0 3.15-1.866 2.585-3.567 2.07C11.42 9.763 10.465 9.473 10 10c-.603.683-.475 1.819-.351 2.92C9.826 14.495 9.996 16 8 16a8 8 0 1 1 8-8zm-8 7c.611 0 .654-.171.655-.176.078-.146.124-.464.07-1.119-.014-.168-.037-.37-.061-.591-.052-.464-.112-1.005-.118-1.462-.01-.707.083-1.61.704-2.314.369-.417.845-.578 1.272-.618.404-.038.812.026 1.16.104.343.077.702.186 1.025.284l.028.008c.346.105.658.199.953.266.653.148.904.083.991.024C14.717 9.38 15 9.161 15 8a7 7 0 1 0-7 7z">
+                                                                            </path>
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="nome bg-transparent text-white">24d600</div>
+                                                            </div>
+                                                            <div class="col cores frente color-option rounded-2"
+                                                                partial="frente" data-color="#7000b1"
+                                                                style="background-color: #7000b1;">
+
+                                                                <div class="div2">
+                                                                    <div class="component">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            width="22" height="22" fill="currentColor"
+                                                                            class="bi bi-palette" viewBox="0 0 16 16">
+                                                                            <path
+                                                                                d="M8 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm4 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM5.5 7a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z">
+                                                                            </path>
+                                                                            <path
+                                                                                d="M16 8c0 3.15-1.866 2.585-3.567 2.07C11.42 9.763 10.465 9.473 10 10c-.603.683-.475 1.819-.351 2.92C9.826 14.495 9.996 16 8 16a8 8 0 1 1 8-8zm-8 7c.611 0 .654-.171.655-.176.078-.146.124-.464.07-1.119-.014-.168-.037-.37-.061-.591-.052-.464-.112-1.005-.118-1.462-.01-.707.083-1.61.704-2.314.369-.417.845-.578 1.272-.618.404-.038.812.026 1.16.104.343.077.702.186 1.025.284l.028.008c.346.105.658.199.953.266.653.148.904.083.991.024C14.717 9.38 15 9.161 15 8a7 7 0 1 0-7 7z">
+                                                                            </path>
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="nome bg-transparent text-white">0E3746</div>
+                                                            </div>
+                                                            <div class="col cores frente color-option rounded-2"
+                                                                partial="frente" data-color="#790000"
+                                                                style="background-color: #790000;">
+
+                                                                <div class="div2">
+                                                                    <div class="component">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            width="22" height="22" fill="currentColor"
+                                                                            class="bi bi-palette" viewBox="0 0 16 16">
+                                                                            <path
+                                                                                d="M8 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm4 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM5.5 7a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z">
+                                                                            </path>
+                                                                            <path
+                                                                                d="M16 8c0 3.15-1.866 2.585-3.567 2.07C11.42 9.763 10.465 9.473 10 10c-.603.683-.475 1.819-.351 2.92C9.826 14.495 9.996 16 8 16a8 8 0 1 1 8-8zm-8 7c.611 0 .654-.171.655-.176.078-.146.124-.464.07-1.119-.014-.168-.037-.37-.061-.591-.052-.464-.112-1.005-.118-1.462-.01-.707.083-1.61.704-2.314.369-.417.845-.578 1.272-.618.404-.038.812.026 1.16.104.343.077.702.186 1.025.284l.028.008c.346.105.658.199.953.266.653.148.904.083.991.024C14.717 9.38 15 9.161 15 8a7 7 0 1 0-7 7z">
+                                                                            </path>
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="nome bg-transparent text-white">24d600</div>
+                                                            </div>
+                                                            <div class="col cores frente color-option rounded-2"
+                                                                partial="frente" data-color="#460e3c"
+                                                                style="background-color: #460e3c;">
+
+                                                                <div class="div2">
+                                                                    <div class="component">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            width="22" height="22" fill="currentColor"
+                                                                            class="bi bi-palette" viewBox="0 0 16 16">
+                                                                            <path
+                                                                                d="M8 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm4 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM5.5 7a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z">
+                                                                            </path>
+                                                                            <path
+                                                                                d="M16 8c0 3.15-1.866 2.585-3.567 2.07C11.42 9.763 10.465 9.473 10 10c-.603.683-.475 1.819-.351 2.92C9.826 14.495 9.996 16 8 16a8 8 0 1 1 8-8zm-8 7c.611 0 .654-.171.655-.176.078-.146.124-.464.07-1.119-.014-.168-.037-.37-.061-.591-.052-.464-.112-1.005-.118-1.462-.01-.707.083-1.61.704-2.314.369-.417.845-.578 1.272-.618.404-.038.812.026 1.16.104.343.077.702.186 1.025.284l.028.008c.346.105.658.199.953.266.653.148.904.083.991.024C14.717 9.38 15 9.161 15 8a7 7 0 1 0-7 7z">
+                                                                            </path>
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="nome bg-transparent text-white">0E3746</div>
+                                                            </div>
+                                                            <div class="col cores frente color-option rounded-2"
+                                                                partial="frente" data-color="#f2ba00"
+                                                                style="background-color: #f2ba00;">
+
+                                                                <div class="div2">
+                                                                    <div class="component">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            width="22" height="22" fill="currentColor"
+                                                                            class="bi bi-palette" viewBox="0 0 16 16">
+                                                                            <path
+                                                                                d="M8 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm4 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM5.5 7a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z">
+                                                                            </path>
+                                                                            <path
+                                                                                d="M16 8c0 3.15-1.866 2.585-3.567 2.07C11.42 9.763 10.465 9.473 10 10c-.603.683-.475 1.819-.351 2.92C9.826 14.495 9.996 16 8 16a8 8 0 1 1 8-8zm-8 7c.611 0 .654-.171.655-.176.078-.146.124-.464.07-1.119-.014-.168-.037-.37-.061-.591-.052-.464-.112-1.005-.118-1.462-.01-.707.083-1.61.704-2.314.369-.417.845-.578 1.272-.618.404-.038.812.026 1.16.104.343.077.702.186 1.025.284l.028.008c.346.105.658.199.953.266.653.148.904.083.991.024C14.717 9.38 15 9.161 15 8a7 7 0 1 0-7 7z">
+                                                                            </path>
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="nome bg-transparent text-white">24d600</div>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                    </div>
+                                                </div>
+
+                                                <!-- //colors  -->
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
