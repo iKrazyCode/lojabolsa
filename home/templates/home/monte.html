@@ -982,7 +982,7 @@
 
 
 {% block js %}
-<!-- script color select -->
+
 <script>
 
     const colorOptions = document.querySelectorAll('.color-option');
@@ -994,10 +994,11 @@
             const partial = option.getAttribute('partial');
 
             if (partial == 'alca') {
-                images[0].color = color;
+                images[0].color = color; 
                 imagesDiagonal[0].color = color;
-                imagesDiagonal[2].color = color;
+                imagesatras[0].color = color;
                 drawCanvasFrente();
+                drawCanvasatras();
                 drawCanvasDiagonal();
             } else if (partial == 'frente') {
                 images[1].color = color;
@@ -1005,8 +1006,8 @@
                 drawCanvasFrente();
                 drawCanvasDiagonal();
             } else if (partial == 'atras') {
-                imagesDiagonal[3].color = color;
-                imagesatras[3].color = color;
+                imagesDiagonal[2].color = color;
+                imagesatras[1].color = color;
                 drawCanvasatras();
                 drawCanvasDiagonal();
             }
@@ -1019,14 +1020,16 @@
 <!-- Canvas Frontal -->
 <script>
 
+
+
     // FRONTAL
     const canvas_frente = document.getElementById('canvas_frente');
     const ctx = canvas_frente.getContext('2d');
 
     // Imagens a serem desenhadas
     const images = [
-        { src: "{% static 'home/img/bolsa/frente_alca.png' %}", x: 50, y: 50, color: '#ff0000' },
-        { src: "{% static 'home/img/bolsa/frente_frente.png' %}", x: 50, y: 50, color: '#ff0000' },
+        { src: "{% static 'home/img/originais/frente-alca.png' %}", x: -30, y: -30, color: '#ff0000' },
+        { src: "{% static 'home/img/originais/frente-frente.png' %}", x: -30, y: -30, color: '#ff0000' },
     ];
 
     // Carrega todas as imagens
@@ -1054,7 +1057,7 @@
             tempCanvas.height = canvas_frente.height;
 
 
-            tempCtx.drawImage(loadedImages[index], img.x, img.y, 150, 150);
+            tempCtx.drawImage(loadedImages[index], img.x, img.y, 315, 315);
 
             // Aplica a máscara no canvas temporário
             tempCtx.globalCompositeOperation = 'source-atop';
@@ -1064,7 +1067,7 @@
 
             tempCtx.fillStyle = cor;
 
-            tempCtx.fillRect(img.x, img.y, 150, 150);
+            tempCtx.fillRect(img.x, img.y, 315, 315);
             ctx.globalCompositeOperation = 'source-over';
 
             // Desenha o conteúdo do canvas temporário no canvas principal
@@ -1098,10 +1101,10 @@
 
     // Imagens a serem desenhadas
     const imagesDiagonal = [
-        { src: "{% static 'home/img/bolsa/diag_alca.png' %}", x: 50, y: 50, color: '#ff0000' },
-        { src: "{% static 'home/img/bolsa/diag_frente.png' %}", x: 50, y: 50, color: '#ff0000' },
-        { src: "{% static 'home/img/bolsa/diag_meio.png' %}", x: 50, y: 50, color: '#ff0000' },
-        { src: "{% static 'home/img/bolsa/diag_atras.png' %}", x: 50, y: 50, color: '#ff0000' },
+        { src:"{% static 'home/img/originais/lado-alca.png' %}", x: -30, y: -30, color: '#ff0000' },
+        { src: "{% static 'home/img/originais/lado-direita.png' %}", x: -30, y: -30, color: '#ff0000' },
+        { src: "{% static 'home/img/originais/lado-esquerda.png' %}", x: -30, y: -30, color: '#ff0000' },
+        
     ];
 
     // Carrega todas as imagens
@@ -1129,7 +1132,7 @@
             tempCanvas.height = canvas_diagonal.height;
 
             // Desenha a imagem no canvas temporário
-            tempCtx.drawImage(loadedImagesDiagonal[index], img.x, img.y, 150, 150);
+            tempCtx.drawImage(loadedImagesDiagonal[index], img.x, img.y, 315, 315);
 
             // Aplica a máscara no canvas temporário
             tempCtx.globalCompositeOperation = 'source-atop';
@@ -1139,7 +1142,7 @@
 
             tempCtx.fillStyle = cor;
 
-            tempCtx.fillRect(img.x, img.y, 150, 150);
+            tempCtx.fillRect(img.x, img.y, 315, 315);
             ctx_diagonal.globalCompositeOperation = 'source-over';
 
             // Desenha o conteúdo do canvas temporário no canvas principal
@@ -1167,6 +1170,7 @@
 
 </script>
 
+
 <!-- Canvas atras -->
 <script>
     // atras
@@ -1175,10 +1179,8 @@
 
     // Imagens a serem desenhadas
     const imagesatras = [
-        { src: "{% static 'home/img/bolsa/diag_alca.png' %}", x: 50, y: 50, color: '#ff0000' },
-        { src: "{% static 'home/img/bolsa/diag_frente.png' %}", x: 50, y: 50, color: '#ff0000' },
-        { src: "{% static 'home/img/bolsa/diag_meio.png' %}", x: 50, y: 50, color: '#ff0000' },
-        { src: "{% static 'home/img/bolsa/diag_atras.png' %}", x: 50, y: 50, color: '#ff0000' },
+        { src: "{% static 'home/img/originais/atras-alca.png' %}", x: -30, y: -30, color: '#ff0000' },
+        { src: "{% static 'home/img/originais/atras-atras.png' %}", x: -30, y: -30, color: '#ff0000' },
     ];
 
     // Carrega todas as imagens
@@ -1206,7 +1208,7 @@
             tempCanvas.height = canvas_atras.height;
 
             // Desenha a imagem no canvas temporário
-            tempCtx.drawImage(loadedImagesatras[index], img.x, img.y, 150, 150);
+            tempCtx.drawImage(loadedImagesatras[index], img.x, img.y, 315, 315);
 
             // Aplica a máscara no canvas temporário
             tempCtx.globalCompositeOperation = 'source-atop';
@@ -1216,7 +1218,7 @@
 
             tempCtx.fillStyle = cor;
 
-            tempCtx.fillRect(img.x, img.y, 150, 150);
+            tempCtx.fillRect(img.x, img.y, 315, 315);
             ctx_atras.globalCompositeOperation = 'source-over';
 
             // Desenha o conteúdo do canvas temporário no canvas principal
