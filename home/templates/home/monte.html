@@ -280,9 +280,13 @@
 
 
 {% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    <input id="input-frente" type="hidden" name="bolsa-frente" required>
+    <input id="input-atras" type="hidden" name="bolsa-atras" required>
+    <input id="input-alca" type="hidden" name="bolsa-alca" required>
 <!-- sessão de montar a bolsa -->
 <div class="p-0 m-0" style="min-height: 50vh">
-
     <div class="">
 
         <div class="container my-5">
@@ -1021,7 +1025,7 @@
                             <div class="card-body">
                                 <div class="radio-input">
                                     <input checked="" class="input-transversal transversal-verde" type="radio"
-                                        name="radio" />
+                                        name="bolsa-transversal" value="verdin" />
                                     Verde
                                 </div>
                             </div>
@@ -1034,7 +1038,7 @@
                                     class="card-img rounded float-left">
                             </div>
                             <div class="card-body">
-                                <input class="input-transversal transversal-preto" type="radio" name="radio" />
+                                <input class="input-transversal transversal-preto" type="radio" name="bolsa-transversal" value="pretin"/>
                                 Preto
                             </div>
                         </div>
@@ -1046,7 +1050,7 @@
                                     class="card-img rounded float-left">
                             </div>
                             <div class="card-body">
-                                <input class="input-transversal transversal-vermelho" type="radio" name="radio" />
+                                <input class="input-transversal transversal-vermelho" type="radio" name="bolsa-transversal" value="vermelhin"/>
                                 Vermelho
                             </div>
                         </div>
@@ -1058,7 +1062,7 @@
                                     class="card-img rounded float-left">
                             </div>
                             <div class="card-body">
-                                <input class="input-transversal transversal-azul" type="radio" name="radio" />
+                                <input class="input-transversal transversal-azul" type="radio" name="bolsa-transversal" value="azulzin"/>
                                 Azul
                             </div>
                         </div>
@@ -1070,7 +1074,7 @@
                                                             class="card-img rounded float-left">
                                                     </div>
                                                     <div class="card-body">
-                                                        <input class="input-transversal transversal-branco" type="radio" name="radio" />
+                                                        <input class="input-transversal transversal-branco" type="radio" name="bolsa-transversal" value="branquin"/>
                                                         Branco
                                                     </div>
                                                 </div>
@@ -1105,8 +1109,8 @@
                     <p>Ao finalizar a compra, você será redirecionado para a nuvem shop, com os produtos montados no
                         carrinho</p>
                     <div class="card- text-center py-3">
-                        <a href="#" class="buy-btn fs-4 text-white py-2 px-4 rounded-5 text-decoration-none"
-                            style="background-color: #01ab6c;">Finalizar Compra <i class="bi bi-bag-fill"></i></a>
+                        <button type="submit" class="border-0 buy-btn fs-4 text-white py-2 px-4 rounded-5 text-decoration-none"
+                            style="background-color: #01ab6c;">Finalizar Compra <i class="bi bi-bag-fill"></i></button>
                     </div>
                 </div>
             </div>
@@ -1114,7 +1118,7 @@
     </div>
 </div>
 <!-- \\ FIM da sessão de montar a bolsa -->
-
+</form>
 
 
 <!-- Menu informativo payments -->
@@ -1150,6 +1154,11 @@
 <script>
 
     const colorOptions = document.querySelectorAll('.color-option');
+    const inputAlca = document.querySelector('#input-alca');
+    const inputFrente = document.querySelector('#input-frente');
+    const inputAtras = document.querySelector('#input-atras');
+    const inputTransversal = document.querySelector('#input-transversal');
+
 
     // Atualiza o input de cor e o texto ao clicar em uma cor pré-definida
     colorOptions.forEach(option => {
@@ -1161,17 +1170,20 @@
                 images[0].color = color;
                 imagesDiagonal[0].color = color;
                 imagesatras[0].color = color;
+                inputAlca.value = color;
                 drawCanvasFrente();
                 drawCanvasatras();
                 drawCanvasDiagonal();
             } else if (partial == 'frente') {
                 images[1].color = color;
                 imagesDiagonal[1].color = color;
+                inputFrente.value = color;
                 drawCanvasFrente();
                 drawCanvasDiagonal();
             } else if (partial == 'atras') {
                 imagesDiagonal[2].color = color;
                 imagesatras[1].color = color;
+                inputAtras.value = color;
                 drawCanvasatras();
                 drawCanvasDiagonal();
             }
