@@ -1178,10 +1178,11 @@
                 const partial = option.getAttribute('partial');
 
                 if (partial == 'alca') {
-                    images[0].color = color;
+                    images[0].color = color; 
                     imagesDiagonal[0].color = color;
-                    imagesDiagonal[2].color = color;
+                    imagesatras[0].color = color;
                     drawCanvasFrente();
+                    drawCanvasatras(); //add
                     drawCanvasDiagonal();
                 } else if (partial == 'frente') {
                     images[1].color = color;
@@ -1189,8 +1190,8 @@
                     drawCanvasFrente();
                     drawCanvasDiagonal();
                 } else if (partial == 'atras') {
-                    imagesDiagonal[3].color = color;
-                    imagesatras[3].color = color;
+                    imagesDiagonal[2].color = color;
+                    imagesatras[1].color = color;
                     drawCanvasatras();
                     drawCanvasDiagonal();
                 }
@@ -1211,8 +1212,8 @@
 
         // Imagens a serem desenhadas
         const images = [
-            { src: 'imgs/frente_alca.png', x: 50, y: 50, color: '#ff0000' },
-            { src: 'imgs/frente_frente.png', x: 50, y: 50, color: '#ff0000' },
+            { src: 'imgs/originais/frente-alca.png', x: 50, y: 50, color: '#ff0000' },
+            { src: 'imgs/originais/frente-frente.png', x: 50, y: 50, color: '#ff0000' },
         ];
 
         // Carrega todas as imagens
@@ -1284,10 +1285,10 @@
 
         // Imagens a serem desenhadas
         const imagesDiagonal = [
-            { src: 'imgs/diag_alca.png', x: 50, y: 50, color: '#ff0000' },
-            { src: 'imgs/diag_frente.png', x: 50, y: 50, color: '#ff0000' },
-            { src: 'imgs/diag_meio.png', x: 50, y: 50, color: '#ff0000' },
-            { src: 'imgs/diag_atras.png', x: 50, y: 50, color: '#ff0000' },
+            { src: 'imgs/originais/lado-alca.png', x: 50, y: 50, color: '#ff0000' },
+            { src: 'imgs/originais/lado-direita.png', x: 50, y: 50, color: '#ff0000' },
+            { src: 'imgs/originais/lado-esquerda.png', x: 50, y: 50, color: '#ff0000' },
+            
         ];
 
         // Carrega todas as imagens
@@ -1353,7 +1354,7 @@
 
     </script>
 
-    <!-- Canvas Atrás -->
+   
     <!-- Canvas atras -->
     <script>
         // atras
@@ -1362,10 +1363,8 @@
 
         // Imagens a serem desenhadas
         const imagesatras = [
-            { src: 'imgs/diag_alca.png', x: 50, y: 50, color: '#ff0000' },
-            { src: 'imgs/diag_frente.png', x: 50, y: 50, color: '#ff0000' },
-            { src: 'imgs/diag_meio.png', x: 50, y: 50, color: '#ff0000' },
-            { src: 'imgs/diag_atras.png', x: 50, y: 50, color: '#ff0000' },
+            { src: 'imgs/originais/atras-alca.png', x: 50, y: 50, color: '#ff0000' },
+            { src: 'imgs/originais/atras-atras.png', x: 50, y: 50, color: '#ff0000' },
         ];
 
         // Carrega todas as imagens
