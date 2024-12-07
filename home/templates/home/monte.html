@@ -306,6 +306,12 @@
                         Atrás
                     </button>
                 </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="transversal-tab" data-bs-toggle="tab" data-bs-target="#transversal"
+                        type="button" role="tab" aria-controls="transversal" aria-selected="false">
+                        Alça Transversal
+                    </button>
+                </li>
             </ul>
 
             <!-- Tab Content -->
@@ -918,20 +924,176 @@
 
 
                 </div>
+
+                <style>
+                    #transversal .card-body {
+                        text-align: center !important;
+                    }
+
+                    /* From Uiverse.io by SupportHotline */
+                    .input-transversal {
+                        -webkit-appearance: none;
+                        /* remove default */
+                        margin: 6px;
+                        width: 24px;
+                        height: 24px;
+                        border-radius: 12px;
+                        cursor: pointer;
+                        vertical-align: middle;
+                        box-shadow: hsla(0, 0%, 100%, 0.15) 0 1px 1px,
+                            inset hsla(0, 0%, 0%, 0.5) 0 0 0 1px;
+                        background-color: hsla(0, 0%, 0%, 0.2);
+                        background-repeat: no-repeat;
+                        -webkit-transition: background-position 0.15s cubic-bezier(0.8, 0, 1, 1),
+                            -webkit-transform 0.25s cubic-bezier(0.8, 0, 1, 1);
+                        outline: none;
+                    }
+
+                    .input-transversal.transversal-verde {
+                        background-image: -webkit-radial-gradient(hsla(118, 100%, 90%, 1) 0%,
+                                hsla(118, 100%, 70%, 1) 15%,
+                                hsla(118, 100%, 60%, 0.3) 28%,
+                                hsla(118, 100%, 30%, 0) 70%);
+                    }
+
+                    .input-transversal.transversal-preto {
+                        background-image: -webkit-radial-gradient(rgb(93, 93, 93) 0%,
+                                rgb(0, 0, 0) 15%,
+                                hsla(0, 0%, 0%, 0.3) 28%,
+                                hsla(50, 100%, 30%, 0) 70%);
+                    }
+
+                    .input-transversal.transversal-vermelho {
+                        background-image: -webkit-radial-gradient(hsla(0, 100%, 90%, 1) 0%,
+                                hsla(0, 100%, 70%, 1) 15%,
+                                hsla(0, 100%, 60%, 0.3) 28%,
+                                hsla(0, 100%, 30%, 0) 70%);
+                    }
+
+                    .input-transversal.transversal-azul {
+                        background-image: -webkit-radial-gradient(rgb(220, 204, 255) 0%,
+                                rgb(102, 102, 255) 15%,
+                                hsla(242, 100%, 60%, 0.3) 28%,
+                                hsla(251, 100%, 30%, 0) 70%);
+                    }
+                    .input-transversal.transversal-branco {
+                        background-image: -webkit-radial-gradient(rgb(255, 255, 255) 0%,
+                                rgb(242, 242, 255) 15%,
+                                hsla(0, 0%, 78%, 0.3) 28%,
+                                hsla(0, 0%, 100%, 0) 70%);
+                    }
+
+                    .input-transversal:checked {
+                        -webkit-transition: background-position 0.2s 0.15s cubic-bezier(0, 0, 0.2, 1),
+                            -webkit-transform 0.25s cubic-bezier(0, 0, 0.2, 1);
+                    }
+
+                    .input-transversal:active {
+                        -webkit-transform: scale(1.5);
+                        -webkit-transition: -webkit-transform 0.1s cubic-bezier(0, 0, 0.2, 1);
+                    }
+
+                    /* The up/down direction logic */
+
+                    .input-transversal,
+                    .input-transversal:active {
+                        background-position: 24px 0;
+                    }
+
+                    .input-transversal:checked {
+                        background-position: 0 0;
+                    }
+
+                    .input-transversal:checked~.input-transversal,
+                    .input-transversal:checked~.input-transversal:active {
+                        background-position: -24px 0;
+                    }
+                </style>
+
+                <div class="tab-pane fade" id="transversal" role="tabpanel" aria-labelledby="transversal-tab">
+                    <div class="row">
+                        <!-- Item Divider -->
+                        <div class="col-6 col-md-3 card border-0 bg-transparent">
+                            <div class="card-header bg-transparent border-0">
+                                <img src="{% static 'home/img/transversais/verde.jpg' %}"
+                                    class="card-img rounded float-left">
+                            </div>
+                            <div class="card-body">
+                                <div class="radio-input">
+                                    <input checked="" class="input-transversal transversal-verde" type="radio"
+                                        name="radio" />
+                                    Verde
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item Divider -->
+                        <div class="col-6 col-md-3 card border-0 bg-transparent">
+                            <div class="card-header bg-transparent border-0">
+                                <img src="{% static 'home/img/transversais/preto.jpg' %}"
+                                    class="card-img rounded float-left">
+                            </div>
+                            <div class="card-body">
+                                <input class="input-transversal transversal-preto" type="radio" name="radio" />
+                                Preto
+                            </div>
+                        </div>
+
+                        <!-- Item Divider -->
+                        <div class="col-6 col-md-3 card border-0 bg-transparent">
+                            <div class="card-header bg-transparent border-0">
+                                <img src="{% static 'home/img/transversais/vermelho.jpg' %}"
+                                    class="card-img rounded float-left">
+                            </div>
+                            <div class="card-body">
+                                <input class="input-transversal transversal-vermelho" type="radio" name="radio" />
+                                Vermelho
+                            </div>
+                        </div>
+
+                        <!-- Item Divider -->
+                        <div class="col-6 col-md-3 card border-0 bg-transparent">
+                            <div class="card-header bg-transparent border-0">
+                                <img src="{% static 'home/img/transversais/azul.jpg' %}"
+                                    class="card-img rounded float-left">
+                            </div>
+                            <div class="card-body">
+                                <input class="input-transversal transversal-azul" type="radio" name="radio" />
+                                Azul
+                            </div>
+                        </div>
+
+                                                <!-- Item Divider -->
+                                                <div class="col-6 col-md-3 card border-0 bg-transparent">
+                                                    <div class="card-header bg-transparent border-0">
+                                                        <img src="{% static 'home/img/transversais/branco.jpg' %}"
+                                                            class="card-img rounded float-left">
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <input class="input-transversal transversal-branco" type="radio" name="radio" />
+                                                        Branco
+                                                    </div>
+                                                </div>
+
+                    </div>
+
+
+                </div>
             </div>
         </div>
 
 
 
 
-<style>
-.buy-btn {
-    transition: linear 0.1s;
-}
-.buy-btn:hover {
-    background-color: #005e3b !important;
-}
-</style>
+        <style>
+            .buy-btn {
+                transition: linear 0.1s;
+            }
+
+            .buy-btn:hover {
+                background-color: #005e3b !important;
+            }
+        </style>
 
     </div>
     <!-- Finalizar compra -->
@@ -940,9 +1102,11 @@
             <div class="card border-0">
                 <div class="card-body">
                     <h2>Finalizar Compra</h2>
-                    <p>Ao finalizar a compra, você será redirecionado para a nuvem shop, com os produtos montados no carrinho</p>
+                    <p>Ao finalizar a compra, você será redirecionado para a nuvem shop, com os produtos montados no
+                        carrinho</p>
                     <div class="card- text-center py-3">
-                        <a href="#" class="buy-btn fs-4 text-white py-2 px-4 rounded-5 text-decoration-none" style="background-color: #01ab6c;">Finalizar Compra <i class="bi bi-bag-fill"></i></a>
+                        <a href="#" class="buy-btn fs-4 text-white py-2 px-4 rounded-5 text-decoration-none"
+                            style="background-color: #01ab6c;">Finalizar Compra <i class="bi bi-bag-fill"></i></a>
                     </div>
                 </div>
             </div>
@@ -994,7 +1158,7 @@
             const partial = option.getAttribute('partial');
 
             if (partial == 'alca') {
-                images[0].color = color; 
+                images[0].color = color;
                 imagesDiagonal[0].color = color;
                 imagesatras[0].color = color;
                 drawCanvasFrente();
@@ -1101,10 +1265,10 @@
 
     // Imagens a serem desenhadas
     const imagesDiagonal = [
-        { src:"{% static 'home/img/originais/lado-alca.png' %}", x: -30, y: -30, color: '#ff0000' },
+        { src: "{% static 'home/img/originais/lado-alca.png' %}", x: -30, y: -30, color: '#ff0000' },
         { src: "{% static 'home/img/originais/lado-direita.png' %}", x: -30, y: -30, color: '#ff0000' },
         { src: "{% static 'home/img/originais/lado-esquerda.png' %}", x: -30, y: -30, color: '#ff0000' },
-        
+
     ];
 
     // Carrega todas as imagens
