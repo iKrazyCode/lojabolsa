@@ -335,8 +335,8 @@
         }
 
         /* Payments cards */
-                /* Estilo do carrossel */
-                .payments-carousel {
+        /* Estilo do carrossel */
+        .payments-carousel {
             overflow: hidden;
             position: relative;
             width: 100%;
@@ -366,6 +366,7 @@
             from {
                 transform: translateX(90%);
             }
+
             to {
                 transform: translateX(-100%);
             }
@@ -376,6 +377,7 @@
             content: "";
             display: block;
         }
+
         canvas {
             /* background-color: green; */
             width: 400px;
@@ -398,7 +400,8 @@
     <header class="header">
         <!-- Botão do Menu Hambúrguer -->
 
-        <nav class="navbar ikr-navbar-bg no-fixed-top" style="border-bottom: #202021 1px solid;background-color: #030303;">
+        <nav class="navbar ikr-navbar-bg no-fixed-top"
+            style="border-bottom: #202021 1px solid;background-color: #030303;">
             <div class="mx-auto py-2 row row-cols-3 align-items-center" style="width: 85%;">
 
                 <div class="col h-100 p-0 m-0 justify-content-center">
@@ -410,7 +413,8 @@
 
                 <div class="navbar-logotipo col p-0 m-0">
                     <div class="fst-italic text-center text-white">
-                        <h3 class=""><a href="#" class="text-decoration-none" style="color: #fafafa;">Nome da Marca</a></h3>
+                        <h3 class=""><a href="#" class="text-decoration-none" style="color: #fafafa;">Nome da Marca</a>
+                        </h3>
                     </div>
                 </div>
 
@@ -923,8 +927,8 @@
                                                         <div
                                                             class="row row-cols-auto text-center justify-content-center gap-1">
                                                             <div class="col cores atras color-option rounded-2"
-                                                                partial="atras" data-color="#0E3746"
-                                                                style="background-color: #0E3746;">
+                                                                partial="atras" data-color="#df3e35"
+                                                                style="background-color: #df3e35;">
 
                                                                 <div class="div2">
                                                                     <div class="component">
@@ -1113,29 +1117,29 @@
 
 
 
-       <!-- Menu informativo payments -->
-<div class="menu-info-payments mt-5">
+        <!-- Menu informativo payments -->
+        <div class="menu-info-payments mt-5">
 
-    <div class="payments-carousel">
-        <div class="card w-75 mx-auto my-5 rounded-2 border-0">
-            <div class="card-header border-0">
-                <h2 class="text-center">Métodos de Pagamento</h2>
+            <div class="payments-carousel">
+                <div class="card w-75 mx-auto my-5 rounded-2 border-0">
+                    <div class="card-header border-0">
+                        <h2 class="text-center">Métodos de Pagamento</h2>
+                    </div>
+                </div>
+                <ul>
+                    <!-- Logotipos -->
+                    <li><img src="imgs/pay-cards/pix.png" alt="Logo Pix"></li>
+                    <li><img src="imgs/pay-cards/mastercard.png" alt="Logo Mastercard"></li>
+                    <li><img src="imgs/pay-cards/visa.png" alt="Logo Visa"></li>
+                    <li><img src="imgs/pay-cards/amex.png" alt="Logo American Express"></li>
+                    <li><img src="imgs/pay-cards/elo.png" alt="Logo Elo"></li>
+                    <li><img src="imgs/pay-cards/hipercard.png" alt="Logo Hipercard"></li>
+                    <li><img src="imgs/pay-cards/diners.png" alt="Logo Diners Club International"></li>
+                    <li><img src="imgs/pay-cards/boleto.png" alt="Símbolo boleto bancário"></li>
+
+                </ul>
             </div>
         </div>
-        <ul>
-            <!-- Logotipos -->
-            <li><img src="imgs/pay-cards/pix.png" alt="Logo Pix"></li>
-            <li><img src="imgs/pay-cards/mastercard.png" alt="Logo Mastercard"></li>
-            <li><img src="imgs/pay-cards/visa.png" alt="Logo Visa"></li>
-            <li><img src="imgs/pay-cards/amex.png" alt="Logo American Express"></li>
-            <li><img src="imgs/pay-cards/elo.png" alt="Logo Elo"></li>
-            <li><img src="imgs/pay-cards/hipercard.png" alt="Logo Hipercard"></li>
-            <li><img src="imgs/pay-cards/diners.png" alt="Logo Diners Club International"></li>
-            <li><img src="imgs/pay-cards/boleto.png" alt="Símbolo boleto bancário"></li>
-            
-            </ul>
-    </div>
-</div>
 
 
     </main>
@@ -1183,7 +1187,7 @@
                 const partial = option.getAttribute('partial');
 
                 if (partial == 'alca') {
-                    images[0].color = color; 
+                    images[0].color = color;
                     imagesDiagonal[0].color = color;
                     imagesatras[0].color = color;
                     drawCanvasFrente();
@@ -1293,7 +1297,7 @@
             { src: 'imgs/originais/lado-alca.png', x: -30, y: -30, color: '#ff0000' },
             { src: 'imgs/originais/lado-direita.png', x: -30, y: -30, color: '#ff0000' },
             { src: 'imgs/originais/lado-esquerda.png', x: -30, y: -30, color: '#ff0000' },
-            
+
         ];
 
         // Carrega todas as imagens
@@ -1359,7 +1363,7 @@
 
     </script>
 
-   
+
     <!-- Canvas atras -->
     <script>
         // atras
@@ -1368,7 +1372,7 @@
 
         // Imagens a serem desenhadas
         const imagesatras = [
-            { src: 'imgs/originais/atras-alca.png', x: -30, y: -30, color: '#ff0000' },
+            { src: 'imgs/edit/atras.png', x: -30, y: -30, color: '#ff0000' },
             { src: 'imgs/originais/atras-atras.png', x: -30, y: -30, color: '#ff0000' },
         ];
 

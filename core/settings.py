@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+from decouple import config
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,13 +23,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-udts9a!(80m7pdzjtp-1ezzvh%fxa!b3tfa&vrx45%)o1lai=i'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = []
 
+
+
+# TOKEN API NUVEMSHOP
+NUVEMSHOP_ACCESS_TOKEN = config('NUVEMSHOP_ACCESS_TOKEN')
+NUVEMSHOP_STORE_ID = config('NUVEMSHOP_STORE_ID')
+NUVEMSHOP_BASE_URL = config('NUVEMSHOP_BASE_URL')
 
 # Application definition
 

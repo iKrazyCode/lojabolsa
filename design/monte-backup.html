@@ -376,6 +376,11 @@
             content: "";
             display: block;
         }
+        canvas {
+            /* background-color: green; */
+            width: 400px;
+            height: 400px;
+        }
     </style>
 
 </head>
@@ -462,7 +467,7 @@
                     </ul>
 
                     <!-- Tab Content -->
-                    <div class="tab-content" id="myTabContent">
+                    <div class="tab-content mt-3" id="myTabContent">
                         <div class="tab-pane fade show active" id="alca" role="tabpanel" aria-labelledby="alca-tab">
                             <div
                                 class="row row-cols-1 row-cols-md-2 justify-content-center text-center items-align-center">
@@ -918,8 +923,8 @@
                                                         <div
                                                             class="row row-cols-auto text-center justify-content-center gap-1">
                                                             <div class="col cores atras color-option rounded-2"
-                                                                partial="atras" data-color="#0E3746"
-                                                                style="background-color: #0E3746;">
+                                                                partial="atras" data-color="#df3e35"
+                                                                style="background-color: #df3e35;">
 
                                                                 <div class="div2">
                                                                     <div class="component">
@@ -1178,10 +1183,11 @@
                 const partial = option.getAttribute('partial');
 
                 if (partial == 'alca') {
-                    images[0].color = color;
+                    images[0].color = color; 
                     imagesDiagonal[0].color = color;
-                    imagesDiagonal[2].color = color;
+                    imagesatras[0].color = color;
                     drawCanvasFrente();
+                    drawCanvasatras();
                     drawCanvasDiagonal();
                 } else if (partial == 'frente') {
                     images[1].color = color;
@@ -1189,8 +1195,8 @@
                     drawCanvasFrente();
                     drawCanvasDiagonal();
                 } else if (partial == 'atras') {
-                    imagesDiagonal[3].color = color;
-                    imagesatras[3].color = color;
+                    imagesDiagonal[2].color = color;
+                    imagesatras[1].color = color;
                     drawCanvasatras();
                     drawCanvasDiagonal();
                 }
@@ -1211,8 +1217,8 @@
 
         // Imagens a serem desenhadas
         const images = [
-            { src: 'imgs/frente_alca.png', x: 50, y: 50, color: '#ff0000' },
-            { src: 'imgs/frente_frente.png', x: 50, y: 50, color: '#ff0000' },
+            { src: 'imgs/originais/frente-alca.png', x: -30, y: -30, color: '#ff0000' },
+            { src: 'imgs/originais/frente-frente.png', x: -30, y: -30, color: '#ff0000' },
         ];
 
         // Carrega todas as imagens
@@ -1240,7 +1246,7 @@
                 tempCanvas.height = canvas_frente.height;
 
 
-                tempCtx.drawImage(loadedImages[index], img.x, img.y, 150, 150);
+                tempCtx.drawImage(loadedImages[index], img.x, img.y, 315, 315);
 
                 // Aplica a máscara no canvas temporário
                 tempCtx.globalCompositeOperation = 'source-atop';
@@ -1250,7 +1256,7 @@
 
                 tempCtx.fillStyle = cor;
 
-                tempCtx.fillRect(img.x, img.y, 150, 150);
+                tempCtx.fillRect(img.x, img.y, 315, 315);
                 ctx.globalCompositeOperation = 'source-over';
 
                 // Desenha o conteúdo do canvas temporário no canvas principal
@@ -1284,10 +1290,10 @@
 
         // Imagens a serem desenhadas
         const imagesDiagonal = [
-            { src: 'imgs/diag_alca.png', x: 50, y: 50, color: '#ff0000' },
-            { src: 'imgs/diag_frente.png', x: 50, y: 50, color: '#ff0000' },
-            { src: 'imgs/diag_meio.png', x: 50, y: 50, color: '#ff0000' },
-            { src: 'imgs/diag_atras.png', x: 50, y: 50, color: '#ff0000' },
+            { src: 'imgs/originais/lado-alca.png', x: -30, y: -30, color: '#ff0000' },
+            { src: 'imgs/originais/lado-direita.png', x: -30, y: -30, color: '#ff0000' },
+            { src: 'imgs/originais/lado-esquerda.png', x: -30, y: -30, color: '#ff0000' },
+            
         ];
 
         // Carrega todas as imagens
@@ -1315,7 +1321,7 @@
                 tempCanvas.height = canvas_diagonal.height;
 
                 // Desenha a imagem no canvas temporário
-                tempCtx.drawImage(loadedImagesDiagonal[index], img.x, img.y, 150, 150);
+                tempCtx.drawImage(loadedImagesDiagonal[index], img.x, img.y, 315, 315);
 
                 // Aplica a máscara no canvas temporário
                 tempCtx.globalCompositeOperation = 'source-atop';
@@ -1325,7 +1331,7 @@
 
                 tempCtx.fillStyle = cor;
 
-                tempCtx.fillRect(img.x, img.y, 150, 150);
+                tempCtx.fillRect(img.x, img.y, 315, 315);
                 ctx_diagonal.globalCompositeOperation = 'source-over';
 
                 // Desenha o conteúdo do canvas temporário no canvas principal
@@ -1353,7 +1359,7 @@
 
     </script>
 
-    <!-- Canvas Atrás -->
+   
     <!-- Canvas atras -->
     <script>
         // atras
@@ -1362,10 +1368,8 @@
 
         // Imagens a serem desenhadas
         const imagesatras = [
-            { src: 'imgs/diag_alca.png', x: 50, y: 50, color: '#ff0000' },
-            { src: 'imgs/diag_frente.png', x: 50, y: 50, color: '#ff0000' },
-            { src: 'imgs/diag_meio.png', x: 50, y: 50, color: '#ff0000' },
-            { src: 'imgs/diag_atras.png', x: 50, y: 50, color: '#ff0000' },
+            { src: 'imgs/edit/atras.png', x: -30, y: -30, color: '#ff0000' },
+            { src: 'imgs/originais/atras-atras.png', x: -30, y: -30, color: '#ff0000' },
         ];
 
         // Carrega todas as imagens
@@ -1393,7 +1397,7 @@
                 tempCanvas.height = canvas_atras.height;
 
                 // Desenha a imagem no canvas temporário
-                tempCtx.drawImage(loadedImagesatras[index], img.x, img.y, 150, 150);
+                tempCtx.drawImage(loadedImagesatras[index], img.x, img.y, 315, 315);
 
                 // Aplica a máscara no canvas temporário
                 tempCtx.globalCompositeOperation = 'source-atop';
@@ -1403,7 +1407,7 @@
 
                 tempCtx.fillStyle = cor;
 
-                tempCtx.fillRect(img.x, img.y, 150, 150);
+                tempCtx.fillRect(img.x, img.y, 315, 315);
                 ctx_atras.globalCompositeOperation = 'source-over';
 
                 // Desenha o conteúdo do canvas temporário no canvas principal
