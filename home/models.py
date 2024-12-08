@@ -13,7 +13,6 @@ class Produto(models.Model):
         ('transversal', 'Transversal')
     ]
 
-    produto_nome = models.CharField(verbose_name='Nome do produto', max_length=130)
     produto_parte = models.CharField(verbose_name='Qual parte esse produto representa', choices=PARTES_CHOICES, max_length=45)
     cor_nome = models.CharField(verbose_name='Nome da Cor', max_length=50)
     cor_hex = models.CharField(verbose_name='Hex dessa cor', max_length=50)
@@ -21,4 +20,4 @@ class Produto(models.Model):
     ativo = models.BooleanField(verbose_name='Produto disponível para compra', default=True)
     
     def __str__(self):
-        return f"produto: {self.nome} - cor: {self.cor_nome}"
+        return f"produto: {self.produto_parte} - cor: {self.cor_nome}"
