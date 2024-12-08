@@ -25,7 +25,7 @@ corpo = {
 
     "products": [
         {
-            "variant_id": 1080170975,
+            "variant_id": 1081514982,
             "quantity": 99,
         }
     ],
@@ -33,7 +33,8 @@ corpo = {
 
 }
 
-
+#1081514982 variant
+#246047548 product
 
 # Fazer a requisição
 response = requests.post(url, json=corpo, headers=headers)

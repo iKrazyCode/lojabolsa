@@ -1,4 +1,5 @@
 import requests
+from pprint import pprint
 
 # Dados do usuário
 user_id = "5302321"
@@ -14,10 +15,10 @@ headers = {
     "User-Agent": "teste (meuemail@dominio.com)"
 }
 
-produto_url = "https://enepta.lojavirtualnuvem.com.br/produtos/carro-importado/"
+produto_url = "https://enepta.lojavirtualnuvem.com.br/produtos/casa-barata/"
 produto_handle = produto_url.split('/')[-1] if not produto_url.endswith('/') else produto_url.split('/')[-2]
 
 
 r = requests.get(url, headers=headers, params={'handle': produto_handle})
 
-print(r.content)
+pprint(r.json())

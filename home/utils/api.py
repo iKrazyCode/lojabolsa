@@ -48,9 +48,9 @@ class NuvemShopApi:
             else:
                 url_part = url_part.split('/')[-1]
             
-            r = NuvemShopApi.get('/products/', params={'handle': url_part, 'fields': 'id'})
+            r = NuvemShopApi.get('/products/', params={'handle': url_part, 'fields': 'variants'})
             prod_id = r
-            list_id.append([url, str(prod_id[0]['id'])])
+            list_id.append([url, str(prod_id[0]['variants'][0]['id'])])
         
         return list_id
     
