@@ -20,4 +20,4 @@ class Produto(models.Model):
     ativo = models.BooleanField(verbose_name='Produto disponível para compra', default=True)
     
     def __str__(self):
-        return f"produto: {self.produto_parte} - cor: {self.cor_nome}"
+        return f"produto: {self.produto_parte} - cor: {self.cor_nome} - {self.product_url}"

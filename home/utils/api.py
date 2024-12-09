@@ -33,6 +33,7 @@ class NuvemShopApi:
             headers=NuvemShopApi.HEADERS,
             json=data)
         
+        
         r.raise_for_status() if settings.DEBUG == False else None
         return r.json()
 
@@ -52,6 +53,7 @@ class NuvemShopApi:
             
             r = NuvemShopApi.get('/products/', params={'handle': url_part, 'fields': 'variants'})
             prod_id = r
+            print(url, prod_id)
             list_id.append([url, str(prod_id[0]['variants'][0]['id'])])
 
         return list_id

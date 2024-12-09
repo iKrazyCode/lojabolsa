@@ -11,17 +11,17 @@ def home(request):
 
     nuvem_produtos_bolsas = NuvemShopApi.get('/products/', params={'q': 'bolsa'})
 
-    pprint(nuvem_produtos_bolsas)
+    #pprint(nuvem_produtos_bolsas)
 
     context = {
         'nuvem_produtos_bolsas': nuvem_produtos_bolsas,
     }
     return render(request, 'home/index.html', context=context)
 
+
 def monte(request):
 
     if str(request.method).lower() == 'post':
-
         balca = request.POST.get('bolsa-alca')
         bfrente = request.POST.get('bolsa-frente')
         batras = request.POST.get('bolsa-atras')
