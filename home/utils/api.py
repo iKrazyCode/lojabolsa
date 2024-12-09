@@ -12,13 +12,19 @@ class NuvemShopApi:
         "User-Agent": "Site (teste@gmail.com)"
     }
 
+    PROXIES = {
+        'http': 'http://200.174.198.86:8888',
+        'https': 'http://200.174.198.86:8888'
+    } # Para usar no python anywhere, para não ser bloqueado pela nuvemshop api
+
     @staticmethod
     def get(endpoint: str, params=None):
         endpoint = endpoint if not endpoint.startswith('/') else endpoint[1:]
         r = requests.get(
             f"{NuvemShopApi.BASE_URL}{endpoint}",
             headers=NuvemShopApi.HEADERS,
-            params=params
+            params=params,
+            proxies=NuvemShopApi.PROXIES
             )
         
         r.raise_for_status() if settings.DEBUG == False else None
@@ -31,7 +37,8 @@ class NuvemShopApi:
         r = requests.post(
             f"{NuvemShopApi.BASE_URL}{endpoint}",
             headers=NuvemShopApi.HEADERS,
-            json=data)
+            json=data,
+            proxies=NuvemShopApi.PROXIES)
         
         
         r.raise_for_status() if settings.DEBUG == False else None
