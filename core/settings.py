@@ -12,30 +12,32 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
-from decouple import config
+from dotenv import load_dotenv
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+config = load_dotenv(dotenv_path=os.path.join(BASE_DIR, '.env'), override=True)
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', cast=bool)
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = []
 
 
 
 # TOKEN API NUVEMSHOP
-NUVEMSHOP_ACCESS_TOKEN = config('NUVEMSHOP_ACCESS_TOKEN')
-NUVEMSHOP_STORE_ID = config('NUVEMSHOP_STORE_ID')
-NUVEMSHOP_BASE_URL = config('NUVEMSHOP_BASE_URL')
+NUVEMSHOP_ACCESS_TOKEN = os.getenv('NUVEMSHOP_ACCESS_TOKEN')
+NUVEMSHOP_STORE_ID = os.getenv('NUVEMSHOP_STORE_ID')
+NUVEMSHOP_BASE_URL = os.getenv('NUVEMSHOP_BASE_URL')
 
 # Application definition
 
