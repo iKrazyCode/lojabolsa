@@ -18,6 +18,9 @@ def monte(request):
         bfrente = request.POST.get('bolsa-frente')
         batras = request.POST.get('bolsa-atras')
         btransversal = request.POST.get('bolsa-transversal')
+        contact_name = request.POST.get('contact-name')
+        contact_lastname = request.POST.get('contact-lastname')
+        contact_email = request.POST.get('contact-email')
         
         if (
             (balca == None or str(balca).strip() == '') or
@@ -28,23 +31,22 @@ def monte(request):
             # Redireciona se não estiver de acordo
             return redirect(reverse('home:monte'))
         
-        
-        print(request.POST)
-        return redirect(reverse('home:monte'))
-        
-        products_id = NuvemShopApi.get_products_id(products_urls=[
-            'https://enepta.lojavirtualnuvem.com.br/produtos/carro-importado/',
-            'https://enepta.lojavirtualnuvem.com.br/produtos/jaqueta-de-couro/'
+
+        products_ids = NuvemShopApi.get_products_id(products_urls=[
+            balca,
+            bfrente,
+            batras,
+            # btransversal[0]
         ])
 
         products_list_variants = []
-        for prod_url, prod_id in products_id:
+        for prod_url, prod_id in products_ids:
             products_list_variants.append({'variant_id': int(prod_id), 'quantity': 1})
 
         data = {
-            'contact_name': 'teste',
-            'contact_lastname': 'testedg',
-            'contact_email': 'teste@gmail.com',
+            'contact_name': f"{contact_name}",
+            'contact_lastname': f"{contact_lastname}",
+            'contact_email': f"{contact_email}",
             'payment_status': 'unpaid',
             'products': products_list_variants,
         }

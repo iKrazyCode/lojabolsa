@@ -20,7 +20,7 @@ class NuvemShopApi:
             headers=NuvemShopApi.HEADERS,
             params=params
             )
-        #r.raise_for_status()
+        r.raise_for_status()
         return r.json()
 
 
@@ -31,7 +31,7 @@ class NuvemShopApi:
             f"{NuvemShopApi.BASE_URL}{endpoint}",
             headers=NuvemShopApi.HEADERS,
             json=data)
-        # r.raise_for_status()
+        r.raise_for_status()
         return r.json()
 
     # Helpers
@@ -51,7 +51,7 @@ class NuvemShopApi:
             r = NuvemShopApi.get('/products/', params={'handle': url_part, 'fields': 'variants'})
             prod_id = r
             list_id.append([url, str(prod_id[0]['variants'][0]['id'])])
-        
+
         return list_id
     
 
