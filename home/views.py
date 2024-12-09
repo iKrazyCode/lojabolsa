@@ -8,7 +8,15 @@ from pprint import pprint
 
 # Create your views here.
 def home(request):
-    return render(request, 'home/index.html')
+
+    nuvem_produtos = NuvemShopApi.get('/products/')
+
+    pprint(nuvem_produtos)
+
+    context = {
+        'nuvem_produtos': nuvem_produtos,
+    }
+    return render(request, 'home/index.html', context=context)
 
 def monte(request):
 

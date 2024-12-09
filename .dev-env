@@ -1,0 +1,5 @@
+SECRET_KEY=django-insecure-udts9a!(80m7pdzjtp-1ezzvh%fxa!b3tfa&vrx45%)o1lai=i
+DEBUG=True
+NUVEMSHOP_ACCESS_TOKEN=41cb849eaf9c3a5f5a5edd2ca1ae4e52202e922d
+NUVEMSHOP_STORE_ID=5302321
+NUVEMSHOP_BASE_URL=https://api.nuvemshop.com.br/v1/5302321/

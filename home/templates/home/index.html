@@ -23,7 +23,7 @@
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="{% static 'home/img/banner.jpg' %}" class="d-block w-100  custom-min-vh-100 h-100"
+                <img src="{% static 'home/img/banner.jpg' %}" class="d-block w-100 custom-min-vh-100 h-100"
                     alt="...">
             </div>
             <div class="carousel-item">
@@ -48,6 +48,7 @@
     </div>
 </div>
 <!-- END BANNER -->
+
 
 <!-- MONTE -->
 <div class="monte-bolsa mt-4 d-none">
@@ -197,6 +198,7 @@
 
 
 <!-- ADS-pc -->
+ {% if nuvem_produtos|length > 0 %}
 <style>
     .card {
         border: none;
@@ -224,42 +226,17 @@
         <div class="carousel-inner w-75 mx-auto">
             <div class="carousel-item active">
                 <div class="row">
+                    {% for prod in nuvem_produtos %}
                     <div class="col-lg-3 col-md-6 col-12 mb-3">
                         <div class="card">
-                            <img src="{% static 'home/img/bolsa/cpreto.jpg' %}" class="card-img-top" alt="Card 1">
+                            <img src="{{ prod.images.0.src }}" class="card-img-top" alt="{{ prod.name.pt }}">
                             <div class="card-body">
-                                <h5 class="card-title">Card Title 1</h5>
-                                <p class="card-text">This is a description for Card 1.</p>
+                                <h5 class="card-title">{{ prod.name.pt }}</h5>
+                                <p class="card-text d-none">Description</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-12 mb-3">
-                        <div class="card">
-                            <img src="{% static 'home/img/bolsa/cpreto.jpg' %}" class="card-img-top" alt="Card 2">
-                            <div class="card-body">
-                                <h5 class="card-title">Card Title 2</h5>
-                                <p class="card-text">This is a description for Card 2.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-12 mb-3">
-                        <div class="card">
-                            <img src="{% static 'home/img/bolsa/cpreto.jpg' %}" class="card-img-top" alt="Card 3">
-                            <div class="card-body">
-                                <h5 class="card-title">Card Title 3</h5>
-                                <p class="card-text">This is a description for Card 3.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-12 mb-3">
-                        <div class="card">
-                            <img src="{% static 'home/img/bolsa/cpreto.jpg' %}" class="card-img-top" alt="Card 4">
-                            <div class="card-body">
-                                <h5 class="card-title">Card Title 4</h5>
-                                <p class="card-text">This is a description for Card 4.</p>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
 
@@ -342,36 +319,19 @@
 <div class="ads my-5 carrossel-pc d-block d-md-none" style="">
     <div id="carouselExampleInterval" class="carousel slide container" data-bs-ride="carousel">
         <div class="carousel-inner">
+            {% for prod in nuvem_produtos %}
             <div class="carousel-item active" data-bs-interval="10000">
                 <div class="card w-75 mx-auto my-3">
-                    <img src="{% static 'home/img/bolsa/cpreto.jpg' %}" class="d-block w-100" alt="...">
+                    <img src="{{ prod.images.0.src }}" class="d-block w-100" alt="...">
                     <div class="card-body">
 
-                        <p class="w-100 d-block">Nome do produto</p>
+                        <p class="w-100 d-block">{{ prod.handle.pt }}</p>
 
                     </div>
                 </div>
             </div>
-            <div class="carousel-item" data-bs-interval="10000">
-                <div class="card w-75 mx-auto my-3">
-                    <img src="{% static 'home/img/bolsa/cpreto.jpg' %}" class="d-block w-100" alt="...">
-                    <div class="card-body">
+            {% endfor %}
 
-                        <p class="w-100 d-block">Nome do produto</p>
-
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item " data-bs-interval="10000">
-                <div class="card w-75 mx-auto my-3">
-                    <img src="{% static 'home/img/bolsa/cpreto.jpg' %}" class="d-block w-100" alt="...">
-                    <div class="card-body">
-
-                        <p class="w-100 d-block">Nome do produto</p>
-
-                    </div>
-                </div>
-            </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
             data-bs-slide="prev">
@@ -383,6 +343,33 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
+    </div>
+    {% endif %}
+</div>
+
+
+
+<!-- Menu informativo payments -->
+<div class="menu-info-payments mt-5">
+
+    <div class="payments-carousel">
+        <div class="card w-75 mx-auto my-5 rounded-2 border-0">
+            <div class="card-header border-0">
+                <h2 class="text-center">Métodos de Pagamento</h2>
+            </div>
+        </div>
+        <ul>
+            <!-- Logotipos -->
+            <li><img src="{% static 'global/img/pay-cards/pix.png' %}" alt="Logo Pix"></li>
+            <li><img src="{% static 'global/img/pay-cards/mastercard.png' %}" alt="Logo Mastercard"></li>
+            <li><img src="{% static 'global/img/pay-cards/visa.png' %}" alt="Logo Visa"></li>
+            <li><img src="{% static 'global/img/pay-cards/amex.png' %}" alt="Logo American Express"></li>
+            <li><img src="{% static 'global/img/pay-cards/elo.png' %}" alt="Logo Elo"></li>
+            <li><img src="{% static 'global/img/pay-cards/hipercard.png' %}" alt="Logo Hipercard"></li>
+            <li><img src="{% static 'global/img/pay-cards/diners.png' %}" alt="Logo Diners Club International"></li>
+            <li><img src="{% static 'global/img/pay-cards/boleto.png' %}" alt="Símbolo boleto bancário"></li>
+
+        </ul>
     </div>
 </div>
 
