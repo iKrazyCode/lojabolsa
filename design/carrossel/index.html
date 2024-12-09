@@ -1,0 +1,118 @@
+
+
+<style>
+    *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.carrossel-category-container {
+    width: 100%;
+    height: 300px;
+    overflow-x: hidden;
+    margin: 40px auto 60px;
+    position: relative;
+    padding: 10px 0;
+    background-color: #111;
+}
+
+.carrossel-category-container h2 {
+    margin-left: 1vw;
+    display: block;
+    font-size: 40px;
+    color: white;
+}
+
+.carrossel-category-container .carrossel-category {
+    width: 98%;
+    margin: 0 auto;
+    height: 80%;
+    display: flex;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.carrossel-category-container .carrossel-category .item {
+    width: 24.8vw;
+    height: 100%;
+    padding: 0 .1vw;
+    flex: none;
+}
+
+.carrossel-category-container .carrossel-category .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carrossel-category-container .carrossel-category-next,
+.carrossel-category-container .carrossel-category-previous {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    top: 45%;
+    color: white;
+    font-size: 50px;
+    padding: 15px;
+    transition: .5s;
+}
+
+.carrossel-category-container .carrossel-category-next {
+    right: 1vw;
+}
+
+.carrossel-category-container .carrossel-category-previous {
+    left: 1vw;
+}
+
+.carrossel-category-container .carrossel-category-next:hover,
+.carrossel-category-container .carrossel-category-previous:hover {
+    background-color: red;
+    transition: .5s;
+    cursor: pointer;
+    font-size: 60px;
+}
+</style>
+
+
+<section class='carrossel-category-container' id='carrossel-category-container'>
+
+    <h2>Comedia</h2>
+
+    <div class='carrossel-category' id='carrossel-category'>
+        <a href="#">
+            <div class='item' id='item-width'>
+                <img src="https://picsum.photos/400/400" alt="">
+            </div>
+        </a>
+
+       
+    </div>
+
+
+    <article class='carrossel-category-previous' id='carrossel-category-previous'>
+        &#10094;
+    </article>
+    <article class='carrossel-category-next' id='carrossel-category-next'>
+        &#10095;
+    </article>
+</section>
+
+
+
+
+<script>
+    const carrosselContainer = document.querySelector('#carrossel-category-container')
+const carrosselCt = document.querySelector('#carrossel-category')
+
+const nextCt = document.querySelector('#carrossel-category-next')
+const previousCt = document.querySelector('#carrossel-category-previous')
+
+nextCt.addEventListener('click', () => {
+    carrosselCt.scrollLeft += carrosselContainer.offsetWidth
+})
+
+previousCt.addEventListener('click', () => {
+    carrosselCt.scrollLeft -= carrosselContainer.offsetWidth
+})
+</script>

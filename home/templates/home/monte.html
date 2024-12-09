@@ -232,49 +232,6 @@
         }
     }
 
-    /* Payments cards */
-    /* Estilo do carrossel */
-    .payments-carousel {
-        overflow: hidden;
-        position: relative;
-        width: 100%;
-    }
-
-    .payments-carousel ul {
-        display: flex;
-        gap: 30px;
-        animation: scroll 15s linear infinite;
-        padding: 0;
-        margin: 0;
-        list-style: none;
-    }
-
-    .payments-carousel li {
-        flex: 0 0 auto;
-    }
-
-    .payments-carousel img {
-        display: block;
-        max-width: 100px;
-        height: auto;
-    }
-
-    /* Animação infinita */
-    @keyframes scroll {
-        from {
-            transform: translateX(90%);
-        }
-
-        to {
-            transform: translateX(-100%);
-        }
-    }
-
-    /* Duplicar a lista para continuidade */
-    .payments-carousel ul::after {
-        content: "";
-        display: block;
-    }
 </style>
 {% endblock %}
 
@@ -770,7 +727,7 @@
 </form>
 
 
-<!-- Menu informativo payments -->
+<!-- Meios de pagamento -->
 <div class="menu-info-payments mt-5">
 
     <div class="payments-carousel">
@@ -793,6 +750,7 @@
         </ul>
     </div>
 </div>
+<!-- // Meios de pagamento -->
 
 
 {% endblock %}

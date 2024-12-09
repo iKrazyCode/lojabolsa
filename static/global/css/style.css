@@ -1,0 +1,46 @@
+
+
+
+
+
+/* Meios de pagamento carrossel */
+    .payments-carousel {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+    }
+
+    .payments-carousel ul {
+        display: flex;
+        gap: 30px;
+        animation: scroll 15s linear infinite;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    .payments-carousel li {
+        flex: 0 0 auto;
+    }
+
+    .payments-carousel img {
+        display: block;
+        max-width: 100px;
+        height: auto;
+    }
+
+
+    @keyframes scroll {
+        from {
+            transform: translateX(90%);
+        }
+
+        to {
+            transform: translateX(-100%);
+        }
+    }
+    .payments-carousel ul::after {
+        content: "";
+        display: block;
+    }
+/* // Meios de pagamento carrossel */

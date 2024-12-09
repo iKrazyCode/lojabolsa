@@ -9,12 +9,12 @@ from pprint import pprint
 # Create your views here.
 def home(request):
 
-    nuvem_produtos = NuvemShopApi.get('/products/')
+    nuvem_produtos_bolsas = NuvemShopApi.get('/products/', params={'q': 'bolsa'})
 
-    pprint(nuvem_produtos)
+    pprint(nuvem_produtos_bolsas)
 
     context = {
-        'nuvem_produtos': nuvem_produtos,
+        'nuvem_produtos_bolsas': nuvem_produtos_bolsas,
     }
     return render(request, 'home/index.html', context=context)
 

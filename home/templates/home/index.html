@@ -197,159 +197,138 @@
 
 
 
-<!-- ADS-pc -->
- {% if nuvem_produtos|length > 0 %}
+<!-- ADS -->
+ 
+
 <style>
-    .card {
-        border: none;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
 
-    .card img {
-        object-fit: cover;
-        height: 200px;
-    }
 
-    .carousel-control-prev-icon,
-    .carousel-control-next-icon {
-        filter: invert(100%);
-    }
+.carrossel-category-container {
+    width: 100%;
+    
+    margin: 40px auto 60px;
+    position: relative;
+    padding: 10px 0;
+    background-color: white;
+}
+
+.carrossel-category-container h2 {
+    margin-left: 1vw;
+    display: block;
+    font-size: 40px;
+    color: white;
+}
+
+.carrossel-category-container .carrossel-category {
+    width: 98%;
+    margin: 0 auto;
+    height: 80%;
+    display: flex;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.carrossel-category-container .carrossel-category .item {
+    width: 24.8vw;
+    min-width: 300px;
+    height: 100%;
+    padding: 0 .1vw;
+    flex: none;
+}
+
+.carrossel-category-container .carrossel-category .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carrossel-category-container .carrossel-category-next,
+.carrossel-category-container .carrossel-category-previous {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    top: 45%;
+    color: white;
+    font-size: 50px;
+    padding: 15px;
+    transition: .5s;
+    cursor: pointer;
+    user-select: none;
+}
+
+.carrossel-category-container .carrossel-category-next {
+    right: 1vw;
+}
+
+.carrossel-category-container .carrossel-category-previous {
+    left: 1vw;
+}
+
+.carrossel-category-container .carrossel-category-next:hover,
+.carrossel-category-container .carrossel-category-previous:hover {
+    background-color: red;
+    transition: .5s;
+    cursor: pointer;
+    font-size: 60px;
+}
 </style>
-<div class="ads-title mt-5">
-    <h2 style="color: #1D1D1F;font-size: 28px;" class="text-center">Outros produtos</h2>
-</div>
-<div class="ads my-5 carrossel-pc d-none d-md-block" style="">
-    <div id="cardCarousel" class="carousel slide container" data-bs-ride="carousel">
-        <!-- Carousel Inner -->
-        <div class="carousel-inner w-75 mx-auto">
-            <div class="carousel-item active">
-                <div class="row">
-                    {% for prod in nuvem_produtos %}
-                    <div class="col-lg-3 col-md-6 col-12 mb-3">
-                        <div class="card">
-                            <img src="{{ prod.images.0.src }}" class="card-img-top" alt="{{ prod.name.pt }}">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ prod.name.pt }}</h5>
-                                <p class="card-text d-none">Description</p>
-                            </div>
-                        </div>
+
+
+<section class='carrossel-category-container container' id='carrossel-category-container'>
+
+    <h2 class="text-bg-dark px-2 rounded-3 rounded-bottom-0">Pré montadas</h2>
+
+    <div class='carrossel-category' id='carrossel-category'>
+        {% for p in nuvem_produtos_bolsas %}
+
+        <a href="{{ p.canonical_url }}" class="text-decoration-none">
+            <div class='item'>
+                <div class="card border-0">
+                    <div class="card-header border-0">
+                        <img src="{{ p.images.0.src }}" alt="" class="img-fluid w-auto">
                     </div>
-                    {% endfor %}
-                </div>
-            </div>
-
-            <div class="carousel-item">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 col-12 mb-3">
-                        <div class="card">
-                            <img src="{% static 'home/img/bolsa/cpreto.jpg' %}" class="card-img-top" alt="Card 5">
-                            <div class="card-body">
-                                <h5 class="card-title">Card Title 5</h5>
-                                <p class="card-text">This is a description for Card 5.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-12 mb-3">
-                        <div class="card">
-                            <img src="{% static 'home/img/bolsa/cpreto.jpg' %}" class="card-img-top" alt="Card 6">
-                            <div class="card-body">
-                                <h5 class="card-title">Card Title 6</h5>
-                                <p class="card-text">This is a description for Card 6.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-12 mb-3">
-                        <div class="card">
-                            <img src="{% static 'home/img/bolsa/cpreto.jpg' %}" class="card-img-top" alt="Card 7">
-                            <div class="card-body">
-                                <h5 class="card-title">Card Title 7</h5>
-                                <p class="card-text">This is a description for Card 7.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-12 mb-3">
-                        <div class="card">
-                            <img src="{% static 'home/img/bolsa/cpreto.jpg' %}" class="card-img-top" alt="Card 8">
-                            <div class="card-body">
-                                <h5 class="card-title">Card Title 8</h5>
-                                <p class="card-text">This is a description for Card 8.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Controls -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#cardCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#cardCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-</div>
-
-<!-- END ADS -->
-
-
-<!-- ADS-mb -->
-<style>
-    .card {
-        border: none;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .card img {
-        object-fit: cover;
-        height: 200px;
-    }
-
-    .carousel-control-prev-icon,
-    .carousel-control-next-icon {
-        filter: invert(100%);
-    }
-</style>
-<div class="ads my-5 carrossel-pc d-block d-md-none" style="">
-    <div id="carouselExampleInterval" class="carousel slide container" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            {% for prod in nuvem_produtos %}
-            <div class="carousel-item active" data-bs-interval="10000">
-                <div class="card w-75 mx-auto my-3">
-                    <img src="{{ prod.images.0.src }}" class="d-block w-100" alt="...">
                     <div class="card-body">
-
-                        <p class="w-100 d-block">{{ prod.handle.pt }}</p>
-
+                        <h5 class="card-title">{{ p.name.pt }}</h5>
                     </div>
                 </div>
             </div>
-            {% endfor %}
-
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+        </a>
+        {% endfor %}
+       
     </div>
-    {% endif %}
-</div>
+
+
+    <article class='carrossel-category-previous' id='carrossel-category-previous'>
+        &#10094;
+    </article>
+    <article class='carrossel-category-next' id='carrossel-category-next'>
+        &#10095;
+    </article>
+</section>
 
 
 
-<!-- Menu informativo payments -->
+
+<script>
+    const carrosselContainer = document.querySelector('#carrossel-category-container')
+const carrosselCt = document.querySelector('#carrossel-category')
+
+const nextCt = document.querySelector('#carrossel-category-next')
+const previousCt = document.querySelector('#carrossel-category-previous')
+
+nextCt.addEventListener('click', () => {
+    carrosselCt.scrollLeft += carrosselContainer.offsetWidth
+})
+
+previousCt.addEventListener('click', () => {
+    carrosselCt.scrollLeft -= carrosselContainer.offsetWidth
+})
+</script>
+<!-- // ADS -->
+
+
+
+<!-- Meios de pagamento -->
 <div class="menu-info-payments mt-5">
 
     <div class="payments-carousel">
@@ -372,13 +351,7 @@
         </ul>
     </div>
 </div>
-
-<!-- END ADS-mb -->
-
-<!-- Menu informativo payments -->
-<div class="menu-info-payments">
-
-</div>
+<!-- // Meios de pagamento -->
 
 {% endblock %}
 
