@@ -13,8 +13,8 @@ class NuvemShopApi:
     }
 
     PROXIES = {
-        'http': 'http://200.174.198.86:8888',
-        'https': 'http://200.174.198.86:8888'
+        'http': 'http://143.107.199.248:8080',
+        'https': 'http://143.107.199.248:8080'
     } # Para usar no python anywhere, para não ser bloqueado pela nuvemshop api
 
     @staticmethod
