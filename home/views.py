@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.urls import reverse
-
+from django.contrib import messages
 from .utils.api import NuvemShopApi
 from .models import Produto
 from django.db.models import Q
@@ -29,6 +29,7 @@ def monte(request):
             (btransversal == None or str(btransversal).strip() == '')
         ):
             # Redireciona se não estiver de acordo
+            messages.add_message(request, messages.WARNING, 'Selecione as cores de todas as partes', extra_tags='danger')
             return redirect(reverse('home:monte'))
         
 
@@ -36,7 +37,7 @@ def monte(request):
             balca,
             bfrente,
             batras,
-            # btransversal[0]
+            # btransversal[0] # TERMINAR DE CONFIGURAR O TRANSVERSAL !!!!!!!!!!!!!!!!!!!!!!!!!
         ])
 
         products_list_variants = []

@@ -20,7 +20,8 @@ class NuvemShopApi:
             headers=NuvemShopApi.HEADERS,
             params=params
             )
-        r.raise_for_status()
+        
+        r.raise_for_status() if settings.DEBUG == False else None
         return r.json()
 
 
@@ -31,7 +32,8 @@ class NuvemShopApi:
             f"{NuvemShopApi.BASE_URL}{endpoint}",
             headers=NuvemShopApi.HEADERS,
             json=data)
-        r.raise_for_status()
+        
+        r.raise_for_status() if settings.DEBUG == False else None
         return r.json()
 
     # Helpers

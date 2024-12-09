@@ -280,6 +280,15 @@
 
 
 {% block content %}
+
+{% for m in messages %}
+<div class="message my-5">
+    <div class="alert alert-{{ m.tags }} py-2 w-75 mx-auto">
+        {{ m.message }}
+    </div>
+</div>
+{% endfor %}
+
 <form action="" method="post">
     {% csrf_token %}
     <input id="input-frente" type="hidden" name="bolsa-frente" required>
@@ -376,7 +385,7 @@
                                                                 </svg>
                                                             </div>
                                                         </div>
-                                                        <div class="nome bg-transparent text-white">{{ p.cor_hex }}</div>
+                                                        <div class="nome text-bg-dark h-auto px-1 rounded-bottom-1">{{ p.cor_nome }}</div>
                                                     </div>
                                                     {% endif %}
                                                     {% endfor %}
@@ -453,7 +462,8 @@
                                                                 </svg>
                                                             </div>
                                                         </div>
-                                                        <div class="nome bg-transparent text-white">{{ p.cor_hex }}</div>
+                                                        <div class="nome text-bg-dark h-auto px-1 rounded-bottom-1">{{ p.cor_nome }}</div>
+
                                                     </div>
                                                     {% endif %}
                                                     {% endfor %}
@@ -529,7 +539,8 @@
                                                             </svg>
                                                         </div>
                                                     </div>
-                                                    <div class="nome bg-transparent text-white">{{ p.cor_hex }}</div>
+                                                    <div class="nome text-bg-dark h-auto px-1 rounded-bottom-1">{{ p.cor_nome }}</div>
+
                                                 </div>
                                                 {% endif %}
                                                 {% endfor %}
