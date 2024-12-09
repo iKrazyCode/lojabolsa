@@ -8,6 +8,7 @@ from pprint import pprint
 
 # Create your views here.
 def home(request):
+    return redirect(to='home:monte')
 
     nuvem_produtos_bolsas = NuvemShopApi.get('/products/', params={'q': 'bolsa'})
 
@@ -45,7 +46,7 @@ def monte(request):
             balca,
             bfrente,
             batras,
-            # btransversal[0] # TERMINAR DE CONFIGURAR O TRANSVERSAL !!!!!!!!!!!!!!!!!!!!!!!!!
+            btransversal
         ])
 
         products_list_variants = []
@@ -66,8 +67,9 @@ def monte(request):
 
     else:
         produtos = Produto.objects.filter(Q(ativo=True))
+        transversal_from_api = NuvemShopApi.get('/products/', params={'q': 'transversal'})
 
-        return render(request, 'home/monte.html', context={'produtos': produtos})
+        return render(request, 'home/monte.html', context={'produtos': produtos, 'transversal_from_api': transversal_from_api})
     
 
 

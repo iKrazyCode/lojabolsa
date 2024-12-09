@@ -17,6 +17,8 @@ class NuvemShopApi:
         'https': 'http://143.107.199.248:8080'
     } # Para usar no python anywhere, para não ser bloqueado pela nuvemshop api
 
+    PROXIES = None
+    
     @staticmethod
     def get(endpoint: str, params=None):
         endpoint = endpoint if not endpoint.startswith('/') else endpoint[1:]
