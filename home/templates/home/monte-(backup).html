@@ -372,12 +372,7 @@
                         <div class="row row-cols-1 row-cols-md-2 justify-content-center text-center items-align-center">
                             <div class="col">
                                 <div class="">
-                                    <div class="box border-1 position-relative" style="width: 300px;height: 300px;">
-                                        <img id="frentex" src="{% static 'home/img/reais/frente-preta.png' %}" alt="" class="w-100 position-absolute"
-                                            style="z-index: 1;">
-                                        <img id="alcax" src="{% static 'home/img/reais/alca-preta.png' %}" alt="" class="w-100 position-absolute"
-                                            style="z-index: 0;">
-                                    </div>
+                                    <canvas id="canvas_frente" class="" width="250" height="250"></canvas>
                                 </div>
                             </div>
                             <div class="col">
@@ -457,12 +452,7 @@
                         <div class="row row-cols-1 row-cols-md-2 justify-content-center text-center items-align-center">
                             <div class="col">
                                 <div class="">
-                                    <div class="box border-1 position-relative" style="width: 300px;height: 300px;">
-                                        <img id="frentex" src="{% static 'home/img/reais/frente-preta.png' %}" alt="" class="w-100 position-absolute"
-                                            style="z-index: 0;">
-                                        <img id="alcax" src="{% static 'home/img/reais/alca-preta.png' %}" alt="" class="w-100 position-absolute"
-                                            style="z-index: 1;">
-                                    </div>
+                                    <canvas id="canvas_atras" class="" width="250" height="250"></canvas>
                                 </div>
                             </div>
                             <div class="col">
@@ -746,9 +736,6 @@
     const inputFrente = document.querySelector('#input-frente');
     const inputAtras = document.querySelector('#input-atras');
     const inputTransversal = document.querySelector('#input-transversal');
-    
-    const frentex = document.getElementById('frentex');
-    const alcax = document.getElementById('alcax');
 
 
     // Atualiza o input de cor e o texto ao clicar em uma cor pré-definida
@@ -759,51 +746,25 @@
             const partial = option.getAttribute('partial');
 
             if (partial == 'alca') {
-                if (color === '#da3b31') {
-                    // vermelho
-                    alcax.setAttribute('src', '/static/home/img/reais/alca-vermelha.png');
-                } else if (color === '#4e4b2c') {
-                    alcax.setAttribute('src', '/static/home/img/reais/alca-verde.png');
-                } else if (color === '#000000') {
-                    alcax.setAttribute('src', '/static/home/img/reais/alca-preta.png');
-                } else if (color === '#fefaf7') {
-                    alcax.setAttribute('src', '/static/home/img/reais/alca-branca.png');
-                } else if (color === '#272733') {
-                    alcax.setAttribute('src', '/static/home/img/reais/alca-azul.png');
-                }
+                images[0].color = color;
+                imagesDiagonal[0].color = color;
+                imagesatras[0].color = color;
                 inputAlca.value = colorProductUrl;
-
+                drawCanvasFrente();
+                drawCanvasatras();
+                drawCanvasDiagonal();
             } else if (partial == 'frente') {
-                if (color === '#da3b31') {
-                    // vermelho
-                    frentex.setAttribute('src', '/static/home/img/reais/frente-vermelha.png');
-                } else if (color === '#4e4b2c') {
-                    frentex.setAttribute('src', '/static/home/img/reais/frente-verde.png');
-                } else if (color === '#000000') {
-                    frentex.setAttribute('src', '/static/home/img/reais/frente-preta.png');
-                } else if (color === '#fefaf7') {
-                    frentex.setAttribute('src', '/static/home/img/reais/frente-branca.png');
-                } else if (color === '#272733') {
-                    frentex.setAttribute('src', '/static/home/img/reais/frente-azul.png');
-                }
-                inputAlca.value = colorProductUrl;
-
-
+                images[1].color = color;
+                imagesDiagonal[1].color = color;
+                inputFrente.value = colorProductUrl;
+                drawCanvasFrente();
+                drawCanvasDiagonal();
             } else if (partial == 'atras') {
-                if (color === '#da3b31') {
-                    // vermelho
-                    frentex.setAttribute('src', '/static/home/img/reais/frente-vermelha.png');
-                } else if (color === '#4e4b2c') {
-                    frentex.setAttribute('src', '/static/home/img/reais/frente-verde.png');
-                } else if (color === '#000000') {
-                    frentex.setAttribute('src', '/static/home/img/reais/frente-preta.png');
-                } else if (color === '#fefaf7') {
-                    frentex.setAttribute('src', '/static/home/img/reais/frente-branca.png');
-                } else if (color === '#272733') {
-                    frentex.setAttribute('src', '/static/home/img/reais/frente-azul.png');
-                }
-                inputAlca.value = colorProductUrl;
-
+                imagesDiagonal[2].color = color;
+                imagesatras[1].color = color;
+                inputAtras.value = colorProductUrl;
+                drawCanvasatras();
+                drawCanvasDiagonal();
             }
 
         });
@@ -811,7 +772,233 @@
 
 </script>
 
+<!-- Canvas Frontal -->
+<script>
 
 
+
+    // FRONTAL
+    const canvas_frente = document.getElementById('canvas_frente');
+    const ctx = canvas_frente.getContext('2d');
+
+    // Imagens a serem desenhadas
+    const images = [
+        { src: "{% static 'home/img/originais/frente-alca.png' %}", x: -30, y: -30, color: '#000000' },
+        { src: "{% static 'home/img/originais/frente-frente.png' %}", x: -30, y: -30, color: '#000000' },
+    ];
+
+    // Carrega todas as imagens
+    const loadedImages = [];
+    images.forEach((img, index) => {
+        const image = new Image();
+        image.src = img.src;
+        image.onload = () => {
+            loadedImages[index] = image;
+            if (loadedImages.length === images.length) {
+                drawCanvasFrente(); // Redesenha quando todas as imagens forem carregadas
+            }
+        };
+    });
+
+    // Função para desenhar o canvas
+    function drawCanvasFrente() {
+        ctx.clearRect(0, 0, canvas_frente.width, canvas_frente.height); // Limpa o canvas
+
+        images.forEach((img, index) => {
+            // Cria um canvas temporário (offscreen)
+            const tempCanvas = document.createElement('canvas');
+            const tempCtx = tempCanvas.getContext('2d');
+            tempCanvas.width = canvas_frente.width;
+            tempCanvas.height = canvas_frente.height;
+
+
+            tempCtx.drawImage(loadedImages[index], img.x, img.y, 315, 315);
+
+            // Aplica a máscara no canvas temporário
+            tempCtx.globalCompositeOperation = 'source-atop';
+
+            console.log(img.color);
+            const cor = hexToRgba(img.color, 0.4);
+
+            tempCtx.fillStyle = cor;
+
+            tempCtx.fillRect(img.x, img.y, 315, 315);
+            ctx.globalCompositeOperation = 'source-over';
+
+            // Desenha o conteúdo do canvas temporário no canvas principal
+            ctx.drawImage(tempCanvas, 0, 0);
+        });
+    }
+
+
+
+    function hexToRgba(hex, alpha = 0.6) {
+        // Remove o símbolo # se existir
+        const cleanHex = hex.replace('#', '');
+
+        // Divide o hexadecimal em R, G, B
+        const bigint = parseInt(cleanHex, 16);
+        const r = (bigint >> 16) & 255; // Vermelho
+        const g = (bigint >> 8) & 255;  // Verde
+        const b = bigint & 255;         // Azul
+
+        // Retorna no formato rgba
+        return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    }
+
+</script>
+
+<!-- Canvas Diagonal -->
+<script>
+    // DIAGONAL
+    const canvas_diagonal = document.getElementById('canvas_diagonal');
+    const ctx_diagonal = canvas_diagonal.getContext('2d');
+
+    // Imagens a serem desenhadas
+    const imagesDiagonal = [
+        { src: "{% static 'home/img/originais/lado-alca.png' %}", x: -30, y: -30, color: '#000000' },
+        { src: "{% static 'home/img/originais/lado-direita.png' %}", x: -30, y: -30, color: '#000000' },
+        { src: "{% static 'home/img/originais/lado-esquerda.png' %}", x: -30, y: -30, color: '#000000' },
+
+    ];
+
+    // Carrega todas as imagens
+    const loadedImagesDiagonal = [];
+    imagesDiagonal.forEach((img, index) => {
+        const image = new Image();
+        image.src = img.src;
+        image.onload = () => {
+            loadedImagesDiagonal[index] = image;
+            if (loadedImagesDiagonal.length === imagesDiagonal.length) {
+                drawCanvasDiagonal(); // Redesenha quando todas as imagens forem carregadas
+            }
+        };
+    });
+
+    // Função para desenhar o canvas
+    function drawCanvasDiagonal() {
+        ctx_diagonal.clearRect(0, 0, canvas_diagonal.width, canvas_diagonal.height); // Limpa o canvas
+
+        imagesDiagonal.forEach((img, index) => {
+            // Cria um canvas temporário (offscreen)
+            const tempCanvas = document.createElement('canvas');
+            const tempCtx = tempCanvas.getContext('2d');
+            tempCanvas.width = canvas_diagonal.width;
+            tempCanvas.height = canvas_diagonal.height;
+
+            // Desenha a imagem no canvas temporário
+            tempCtx.drawImage(loadedImagesDiagonal[index], img.x, img.y, 315, 315);
+
+            // Aplica a máscara no canvas temporário
+            tempCtx.globalCompositeOperation = 'source-atop';
+
+            console.log(img.color);
+            const cor = hexToRgba(img.color, 0.4);
+
+            tempCtx.fillStyle = cor;
+
+            tempCtx.fillRect(img.x, img.y, 315, 315);
+            ctx_diagonal.globalCompositeOperation = 'source-over';
+
+            // Desenha o conteúdo do canvas temporário no canvas principal
+            ctx_diagonal.drawImage(tempCanvas, 0, 0);
+        });
+    }
+
+
+
+
+
+    function hexToRgba(hex, alpha = 0.6) {
+        // Remove o símbolo # se existir
+        const cleanHex = hex.replace('#', '');
+
+        // Divide o hexadecimal em R, G, B
+        const bigint = parseInt(cleanHex, 16);
+        const r = (bigint >> 16) & 255; // Vermelho
+        const g = (bigint >> 8) & 255;  // Verde
+        const b = bigint & 255;         // Azul
+
+        // Retorna no formato rgba
+        return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    }
+
+</script>
+
+
+<!-- Canvas atras -->
+<script>
+    // atras
+    const canvas_atras = document.getElementById('canvas_atras');
+    const ctx_atras = canvas_atras.getContext('2d');
+
+    // Imagens a serem desenhadas
+    const imagesatras = [
+        { src: "{% static 'home/img/originais/atras-alca.png' %}", x: -30, y: -30, color: '#000000' },
+        { src: "{% static 'home/img/originais/atras-atras.png' %}", x: -30, y: -30, color: '#000000' },
+    ];
+
+    // Carrega todas as imagens
+    const loadedImagesatras = [];
+    imagesatras.forEach((img, index) => {
+        const image = new Image();
+        image.src = img.src;
+        image.onload = () => {
+            loadedImagesatras[index] = image;
+            if (loadedImagesatras.length === imagesatras.length) {
+                drawCanvasatras(); // Redesenha quando todas as imagens forem carregadas
+            }
+        };
+    });
+
+    // Função para desenhar o canvas
+    function drawCanvasatras() {
+        ctx_atras.clearRect(0, 0, canvas_atras.width, canvas_atras.height); // Limpa o canvas
+
+        imagesatras.forEach((img, index) => {
+            // Cria um canvas temporário (offscreen)
+            const tempCanvas = document.createElement('canvas');
+            const tempCtx = tempCanvas.getContext('2d');
+            tempCanvas.width = canvas_atras.width;
+            tempCanvas.height = canvas_atras.height;
+
+            // Desenha a imagem no canvas temporário
+            tempCtx.drawImage(loadedImagesatras[index], img.x, img.y, 315, 315);
+
+            // Aplica a máscara no canvas temporário
+            tempCtx.globalCompositeOperation = 'source-atop';
+
+            console.log(img.color);
+            const cor = hexToRgba(img.color, 0.4);
+
+            tempCtx.fillStyle = cor;
+
+            tempCtx.fillRect(img.x, img.y, 315, 315);
+            ctx_atras.globalCompositeOperation = 'source-over';
+
+            // Desenha o conteúdo do canvas temporário no canvas principal
+            ctx_atras.drawImage(tempCanvas, 0, 0);
+        });
+    }
+
+
+
+
+
+    function hexToRgba(hex, alpha = 0.6) {
+        // Remove o símbolo # se existir
+        const cleanHex = hex.replace('#', '');
+
+        // Divide o hexadecimal em R, G, B
+        const bigint = parseInt(cleanHex, 16);
+        const r = (bigint >> 16) & 255; // Vermelho
+        const g = (bigint >> 8) & 255;  // Verde
+        const b = bigint & 255;         // Azul
+
+        // Retorna no formato rgba
+        return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    }
+
+</script>
 
 {% endblock %}
