@@ -290,7 +290,14 @@
                         <div class="row row-cols-1 row-cols-md-2 justify-content-center text-center items-align-center">
                             <div class="col">
                                 <div class="">
-                                    <canvas id="canvas_diagonal" class="" width="250" height="250"></canvas>
+                                    <div class="box border-1 position-relative" style="width: 300px;height: 300px;">
+                                        <img id="alca-meio" src="{% static 'home/img/reais/meio/meio-preta.png' %}" alt=""
+                                            class="w-100 position-absolute" style="z-index: 0;">
+                                        <img id="alca-meio-e" src="{% static 'home/img/reais/meio/meio-e-preta.png' %}" alt=""
+                                            class="w-100 position-absolute" style="z-index: 1;">
+                                        <img id="alca-meio-d" src="{% static 'home/img/reais/meio/meio-d-preta.png' %}" alt=""
+                                            class="w-100 position-absolute" style="z-index: 1;">
+                                    </div>
                                 </div>
                             </div>
                             <div class="col">
@@ -373,10 +380,10 @@
                             <div class="col">
                                 <div class="">
                                     <div class="box border-1 position-relative" style="width: 300px;height: 300px;">
-                                        <img id="frentex" src="{% static 'home/img/reais/frente-preta.png' %}" alt="" class="w-100 position-absolute"
-                                            style="z-index: 1;">
-                                        <img id="alcax" src="{% static 'home/img/reais/alca-preta.png' %}" alt="" class="w-100 position-absolute"
-                                            style="z-index: 0;">
+                                        <img id="frentex" src="{% static 'home/img/reais/frente-preta.png' %}" alt=""
+                                            class="w-100 position-absolute" style="z-index: 1;">
+                                        <img id="alcax" src="{% static 'home/img/reais/alca-preta.png' %}" alt=""
+                                            class="w-100 position-absolute" style="z-index: 0;">
                                     </div>
                                 </div>
                             </div>
@@ -458,10 +465,10 @@
                             <div class="col">
                                 <div class="">
                                     <div class="box border-1 position-relative" style="width: 300px;height: 300px;">
-                                        <img id="frentex" src="{% static 'home/img/reais/frente-preta.png' %}" alt="" class="w-100 position-absolute"
-                                            style="z-index: 0;">
-                                        <img id="alcax" src="{% static 'home/img/reais/alca-preta.png' %}" alt="" class="w-100 position-absolute"
-                                            style="z-index: 1;">
+                                        <img id="frentex" src="{% static 'home/img/reais/frente-preta.png' %}" alt=""
+                                            class="w-100 position-absolute" style="z-index: 0;">
+                                        <img id="alcax" src="{% static 'home/img/reais/alca-preta.png' %}" alt=""
+                                            class="w-100 position-absolute" style="z-index: 1;">
                                     </div>
                                 </div>
                             </div>
@@ -635,8 +642,7 @@
                             <!-- Item Divider -->
                             <div class="col-6 col-md-3 card border-0 bg-transparent">
                                 <div class="card-header bg-transparent border-0">
-                                    <img src="{{ t.images.0.src }}"
-                                        class="card-img rounded float-left">
+                                    <img src="{{ t.images.0.src }}" class="card-img rounded float-left">
                                 </div>
                                 <div class="card-body">
                                     <input class="input-transversal transversal-verde" type="radio"
@@ -746,9 +752,15 @@
     const inputFrente = document.querySelector('#input-frente');
     const inputAtras = document.querySelector('#input-atras');
     const inputTransversal = document.querySelector('#input-transversal');
-    
+
+    // tab de FRENTE
     const frentex = document.getElementById('frentex');
     const alcax = document.getElementById('alcax');
+
+    // tab de ALÇA
+    const alca_meio = document.getElementById('alca-meio')
+    const alca_meio_e = document.getElementById('alca-meio-e')
+    const alca_meio_d = document.getElementById('alca-meio-d')
 
 
     // Atualiza o input de cor e o texto ao clicar em uma cor pré-definida
@@ -762,15 +774,21 @@
                 if (color === '#da3b31') {
                     // vermelho
                     alcax.setAttribute('src', '/static/home/img/reais/alca-vermelha.png');
+                    alca_meio.setAttribute('src', '/static/home/img/reais/meio/meio-vermelha.png');
                 } else if (color === '#4e4b2c') {
                     alcax.setAttribute('src', '/static/home/img/reais/alca-verde.png');
+                    alca_meio.setAttribute('src', '/static/home/img/reais/meio/meio-verde.png');
                 } else if (color === '#000000') {
                     alcax.setAttribute('src', '/static/home/img/reais/alca-preta.png');
+                    alca_meio.setAttribute('src', '/static/home/img/reais/meio/meio-preta.png');
                 } else if (color === '#fefaf7') {
                     alcax.setAttribute('src', '/static/home/img/reais/alca-branca.png');
+                    alca_meio.setAttribute('src', '/static/home/img/reais/meio/meio-branca.png');
                 } else if (color === '#272733') {
                     alcax.setAttribute('src', '/static/home/img/reais/alca-azul.png');
+                    alca_meio.setAttribute('src', '/static/home/img/reais/meio/meio-azul.png')
                 }
+                
                 inputAlca.value = colorProductUrl;
 
             } else if (partial == 'frente') {
