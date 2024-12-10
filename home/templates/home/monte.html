@@ -465,10 +465,10 @@
                             <div class="col">
                                 <div class="">
                                     <div class="box border-1 position-relative" style="width: 300px;height: 300px;">
-                                        <img id="frentex" src="{% static 'home/img/reais/frente-preta.png' %}" alt=""
-                                            class="w-100 position-absolute" style="z-index: 0;">
-                                        <img id="alcax" src="{% static 'home/img/reais/alca-preta.png' %}" alt=""
+                                        <img id="atrasx" src="{% static 'home/img/reais/atras-preta.png' %}" alt=""
                                             class="w-100 position-absolute" style="z-index: 1;">
+                                        <img id="atras-alca" src="{% static 'home/img/reais/alca-preta.png' %}" alt=""
+                                            class="w-100 position-absolute" style="z-index: 0;">
                                     </div>
                                 </div>
                             </div>
@@ -762,6 +762,10 @@
     const alca_meio_e = document.getElementById('alca-meio-e')
     const alca_meio_d = document.getElementById('alca-meio-d')
 
+    // tab ATRÁS
+    const atrasx = document.getElementById('atrasx');
+    const atras_alca = document.getElementById('atras-alca');
+
 
     // Atualiza o input de cor e o texto ao clicar em uma cor pré-definida
     colorOptions.forEach(option => {
@@ -788,21 +792,26 @@
                     alcax.setAttribute('src', '/static/home/img/reais/alca-azul.png');
                     alca_meio.setAttribute('src', '/static/home/img/reais/meio/meio-azul.png')
                 }
-                
+
                 inputAlca.value = colorProductUrl;
 
             } else if (partial == 'frente') {
                 if (color === '#da3b31') {
                     // vermelho
                     frentex.setAttribute('src', '/static/home/img/reais/frente-vermelha.png');
+                    alca_meio_d.setAttribute('src', '/static/home/img/reais/meio/meio-d-vermelha.png')
                 } else if (color === '#4e4b2c') {
                     frentex.setAttribute('src', '/static/home/img/reais/frente-verde.png');
+                    alca_meio_d.setAttribute('src', '/static/home/img/reais/meio/meio-d-verde.png')
                 } else if (color === '#000000') {
                     frentex.setAttribute('src', '/static/home/img/reais/frente-preta.png');
+                    alca_meio_d.setAttribute('src', '/static/home/img/reais/meio/meio-d-preta.png')
                 } else if (color === '#fefaf7') {
                     frentex.setAttribute('src', '/static/home/img/reais/frente-branca.png');
+                    alca_meio_d.setAttribute('src', '/static/home/img/reais/meio/meio-d-branca.png')
                 } else if (color === '#272733') {
                     frentex.setAttribute('src', '/static/home/img/reais/frente-azul.png');
+                    alca_meio_d.setAttribute('src', '/static/home/img/reais/meio/meio-d-azul.png')
                 }
                 inputAlca.value = colorProductUrl;
 
@@ -810,15 +819,21 @@
             } else if (partial == 'atras') {
                 if (color === '#da3b31') {
                     // vermelho
-                    frentex.setAttribute('src', '/static/home/img/reais/frente-vermelha.png');
+                    atrasx.setAttribute('src', '/static/home/img/reais/frente-vermelha.png');
+                    alca_meio_e.setAttribute('src', '/static/home/img/reais/meio/meio-e-vermelha.png');
                 } else if (color === '#4e4b2c') {
-                    frentex.setAttribute('src', '/static/home/img/reais/frente-verde.png');
+                    atrasx.setAttribute('src', '/static/home/img/reais/frente-verde.png');
+                    alca_meio_e.setAttribute('src', '/static/home/img/reais/meio/meio-e-verde.png');
                 } else if (color === '#000000') {
-                    frentex.setAttribute('src', '/static/home/img/reais/frente-preta.png');
+                    atrasx.setAttribute('src', '/static/home/img/reais/frente-preta.png');
+                    alca_meio_e.setAttribute('src', '/static/home/img/reais/meio/meio-e-preta.png');
                 } else if (color === '#fefaf7') {
-                    frentex.setAttribute('src', '/static/home/img/reais/frente-branca.png');
+                    atrasx.setAttribute('src', '/static/home/img/reais/frente-branca.png');
+                    alca_meio_e.setAttribute('src', '/static/home/img/reais/meio/meio-e-branca.png');
                 } else if (color === '#272733') {
-                    frentex.setAttribute('src', '/static/home/img/reais/frente-azul.png');
+                    atrasx.setAttribute('src', '/static/home/img/reais/frente-azul.png');
+                    alca_meio_e.setAttribute('src', '/static/home/img/reais/meio/meio-e-azul.png');
+
                 }
                 inputAlca.value = colorProductUrl;
 
