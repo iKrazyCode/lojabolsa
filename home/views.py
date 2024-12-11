@@ -23,6 +23,7 @@ def home(request):
 def monte(request):
 
     if str(request.method).lower() == 'post':
+        pprint(request.POST)
         balca = request.POST.get('bolsa-alca')
         bfrente = request.POST.get('bolsa-frente')
         batras = request.POST.get('bolsa-atras')
