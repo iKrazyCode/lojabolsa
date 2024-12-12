@@ -722,6 +722,43 @@
 
 <script>
 
+    // Lista de imagens para serem pré-carregadas
+        const imagePaths = [
+            '/static/home/img/reais/alca-vermelha.png',
+            '/static/home/img/reais/alca-preta.png',
+            '/static/home/img/reais/alca-verde.png',
+            '/static/home/img/reais/alca-azul.png',
+            '/static/home/img/reais/alca-branca.png',
+
+            '/static/home/img/reais/frente-vermelha.png',
+            '/static/home/img/reais/frente-preta.png',
+            '/static/home/img/reais/frente-branca.png',
+            '/static/home/img/reais/frente-azul.png',
+            '/static/home/img/reais/frente-verde.png',
+
+            '/static/home/img/reais/meio/meio-branca.png',
+            '/static/home/img/reais/meio/meio-preta.png',
+            '/static/home/img/reais/meio/meio-azul.png',
+            '/static/home/img/reais/meio/meio-vermelha.png',
+            '/static/home/img/reais/meio/meio-verde.png',
+
+            '/static/home/img/reais/atras-vermelha.png',
+            '/static/home/img/reais/atras-preta.png',
+            '/static/home/img/reais/atras-brancaa.png',
+            '/static/home/img/reais/atras-verde.png',
+            '/static/home/img/reais/atras-azul.png',
+        ];
+    
+        // Pré-carregar as imagens
+        const preloadedImages = [];
+        imagePaths.forEach((path) => {
+            const img = new Image();
+            img.src = path;
+            preloadedImages.push(img);
+        });
+    
+    // 
+
     const colorOptions = document.querySelectorAll('.color-option');
     const inputAlca = document.querySelector('#input-alca');
     const inputFrente = document.querySelector('#input-frente');
