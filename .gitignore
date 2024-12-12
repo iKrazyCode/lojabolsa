@@ -30,6 +30,7 @@ share/python-wheels/
 
 # Django stuff:
 *.log
+*.logs
 *.pot
 *.pyc
 __pycache__/
