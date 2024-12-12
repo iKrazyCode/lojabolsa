@@ -1,6 +1,6 @@
 {% extends 'global/base.html' %}
 {% load static %}
-
+{% load custom_filters %}
 
 {% block css %}
 <style>
@@ -258,25 +258,26 @@
                 <!-- Nav Tabs -->
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="alca-tab" data-bs-toggle="tab" data-bs-target="#alca"
-                            type="button" role="tab" aria-controls="alca" aria-selected="true">
-                            Alça
-                        </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="frente-tab" data-bs-toggle="tab" data-bs-target="#frente"
+                        <button class="nav-link active text-dark" id="frente-tab" data-bs-toggle="tab" data-bs-target="#frente"
                             type="button" role="tab" aria-controls="frente" aria-selected="false">
                             Frente
                         </button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="atras-tab" data-bs-toggle="tab" data-bs-target="#atras"
+                        <button class="nav-link text-dark" id="alca-tab" data-bs-toggle="tab" data-bs-target="#alca"
+                            type="button" role="tab" aria-controls="alca" aria-selected="true">
+                            Centro
+                        </button>
+                    </li>
+
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link text-dark" id="atras-tab" data-bs-toggle="tab" data-bs-target="#atras"
                             type="button" role="tab" aria-controls="atras" aria-selected="false">
-                            Atrás
+                            Costas
                         </button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="transversal-tab" data-bs-toggle="tab" data-bs-target="#transversal"
+                        <button class="nav-link text-dark" id="transversal-tab" data-bs-toggle="tab" data-bs-target="#transversal"
                             type="button" role="tab" aria-controls="transversal" aria-selected="false">
                             Alça Transversal
                         </button>
@@ -286,7 +287,7 @@
                 <!-- Tab Content -->
                 <div class="tab-content" id="myTabContent">
                     <!-- tab alça -->
-                    <div class="tab-pane fade show active" id="alca" role="tabpanel" aria-labelledby="alca-tab">
+                    <div class="tab-pane fade" id="alca" role="tabpanel" aria-labelledby="alca-tab">
                         <div class="row row-cols-1 row-cols-md-2 justify-content-center text-center items-align-center">
                             <div class="col">
                                 <div class="">
@@ -351,8 +352,9 @@
                                                                     </svg>
                                                                 </div>
                                                             </div>
-                                                            <div class="nome text-bg-dark h-auto px-1 rounded-bottom-1">
-                                                                {{ p.cor_nome }}</div>
+                                                            <div class="nome {% if p.cor_nome|contains:'white' or p.cor_nome|contains:'branco' %}text-dark{% else %}text-white{% endif %} bg-transparent h-auto px-1 rounded-bottom-1">
+                                                                {{ p.cor_nome }}
+                                                            </div>
                                                         </div>
                                                         {% endif %}
                                                         {% endfor %}
@@ -375,7 +377,7 @@
 
                     </div>
                     <!-- tab frente -->
-                    <div class="tab-pane fade" id="frente" role="tabpanel" aria-labelledby="frente-tab">
+                    <div class="tab-pane fade  show active" id="frente" role="tabpanel" aria-labelledby="frente-tab">
                         <div class="row row-cols-1 row-cols-md-2 justify-content-center text-center items-align-center">
                             <div class="col">
                                 <div class="">
@@ -437,7 +439,7 @@
                                                                     </svg>
                                                                 </div>
                                                             </div>
-                                                            <div class="nome text-bg-dark h-auto px-1 rounded-bottom-1">
+                                                            <div class="nome {% if p.cor_nome|contains:'white' or p.cor_nome|contains:'branco' %}text-dark{% else %}text-white{% endif %} bg-transparent h-auto px-1 rounded-bottom-1">
                                                                 {{ p.cor_nome }}</div>
 
                                                         </div>
@@ -523,7 +525,7 @@
                                                                     </svg>
                                                                 </div>
                                                             </div>
-                                                            <div class="nome text-bg-dark h-auto px-1 rounded-bottom-1">
+                                                            <div class="nome {% if p.cor_nome|contains:'white' or p.cor_nome|contains:'branco' %}text-dark{% else %}text-white{% endif %} bg-transparent h-auto px-1 rounded-bottom-1">
                                                                 {{ p.cor_nome }}</div>
 
                                                         </div>
