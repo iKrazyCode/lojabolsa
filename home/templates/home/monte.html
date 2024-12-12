@@ -256,7 +256,74 @@
     <input id="input-atras" type="hidden" name="bolsa-atras" required>
     <input id="input-alca" type="hidden" name="bolsa-alca" required>
     <!-- sessão de montar a bolsa -->
-    <div class="p-0 m-0" style="min-height: 50vh">
+
+
+    <div class="my-5" style="min-height: 50%;">
+    <style>
+        /* From Uiverse.io by adamgiebl */ 
+    .dots-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .dot {
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+    border-radius: 10px;
+    background-color: #b3d4fc;
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+  
+  .dot:last-child {
+    margin-right: 0;
+  }
+  
+  .dot:nth-child(1) {
+    animation-delay: -0.3s;
+  }
+  
+  .dot:nth-child(2) {
+    animation-delay: -0.1s;
+  }
+  
+  .dot:nth-child(3) {
+    animation-delay: 0.1s;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(0.8);
+      background-color: #b3d4fc;
+      box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
+    }
+  
+    50% {
+      transform: scale(1.2);
+      background-color: #6793fb;
+      box-shadow: 0 0 0 10px rgba(178, 212, 252, 0);
+    }
+  
+    100% {
+      transform: scale(0.8);
+      background-color: #b3d4fc;
+      box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
+    }
+  }
+    </style>
+    <section class="dots-container" id="preloader-box">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </section>
+    </div>
+
+    <div class="p-0 m-0 d-none" style="min-height: 50vh" id="posloader-box">
         <div class="">
 
             <div class="container my-5">
@@ -744,18 +811,53 @@
 
             '/static/home/img/reais/atras-vermelha.png',
             '/static/home/img/reais/atras-preta.png',
-            '/static/home/img/reais/atras-brancaa.png',
+            '/static/home/img/reais/atras-branca.png',
             '/static/home/img/reais/atras-verde.png',
             '/static/home/img/reais/atras-azul.png',
         ];
     
-        // Pré-carregar as imagens
-        const preloadedImages = [];
-        imagePaths.forEach((path) => {
-            const img = new Image();
-            img.src = path;
-            preloadedImages.push(img);
-        });
+// Array para armazenar imagens carregadas
+const preloadedImages = [];
+let loadedCount = 0;
+const preloader_box = document.getElementById('preloader-box');
+const posloader_box = document.getElementById('posloader-box');
+
+// Função para verificar quando todas as imagens estão carregadas
+function preloadImages(paths, callback) {
+    paths.forEach((path) => {
+        const img = new Image();
+        img.src = path;
+        img.onload = () => {
+            loadedCount++;
+            console.log(`Imagem carregada: ${path}`);
+            
+            // Verifica se todas as imagens foram carregadas
+            if (loadedCount === paths.length) {
+                callback();
+            }
+        };
+        img.onerror = () => {
+            console.error(`Erro ao carregar a imagem: ${path}`);
+            loadedCount++;
+
+            // Ainda verificamos se todas as imagens (incluindo falhas) foram processadas
+            if (loadedCount === paths.length) {
+                callback();
+            }
+        };
+        preloadedImages.push(img);
+    });
+}
+
+// Inicia o preload e define o callback
+preloadImages(imagePaths, () => {
+    console.log('Todas as imagens foram carregadas.');
+    preloader_box.classList.remove('d-block');
+    posloader_box.classList.remove('d-none')
+
+    preloader_box.classList.add('d-none');
+    posloader_box.classList.add('d-block');
+});
     
     // 
 

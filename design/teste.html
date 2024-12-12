@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carregando</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        #loading {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loading">
+        <div>Carregando, por favor, aguarde...</div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const imagePaths = [
+                '/static/home/img/reais/alca-vermelha.png',
+                '/static/home/img/reais/alca-preta.png',
+                '/static/home/img/reais/alca-verde.png',
+                '/static/home/img/reais/alca-azul.png',
+                '/static/home/img/reais/alca-branca.png',
+
+                '/static/home/img/reais/frente-vermelha.png',
+                '/static/home/img/reais/frente-preta.png',
+                '/static/home/img/reais/frente-branca.png',
+                '/static/home/img/reais/frente-azul.png',
+                '/static/home/img/reais/frente-verde.png',
+
+                '/static/home/img/reais/meio/meio-branca.png',
+                '/static/home/img/reais/meio/meio-preta.png',
+                '/static/home/img/reais/meio/meio-azul.png',
+                '/static/home/img/reais/meio/meio-vermelha.png',
+                '/static/home/img/reais/meio/meio-verde.png',
+
+                '/static/home/img/reais/atras-vermelha.png',
+                '/static/home/img/reais/atras-preta.png',
+                '/static/home/img/reais/atras-branca.png',
+                '/static/home/img/reais/atras-verde.png',
+                '/static/home/img/reais/atras-azul.png',
+            ];
+
+            const preloadedImages = [];
+            let loadedImagesCount = 0;
+            const totalImages = imagePaths.length;
+
+            function onImageLoad() {
+                loadedImagesCount++;
+            }
+
+            imagePaths.forEach((path) => {
+                const img = new Image();
+                img.src = path;
+                img.onload = onImageLoad;
+                preloadedImages.push(img);
+            });
+
+            setTimeout(() => {
+                window.location.href = '/monte';
+            }, 8000);
+
+            const checkImagesLoadedInterval = setInterval(() => {
+                if (loadedImagesCount === totalImages) {
+                    clearInterval(checkImagesLoadedInterval);
+                    window.location.href = '/monte';
+                }
+            }, 100);
+        });
+    </script>
+
+</body>
+</html>
